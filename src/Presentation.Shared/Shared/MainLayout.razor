@@ -1,0 +1,42 @@
+﻿@inherits LayoutComponentBase
+
+<PageTitle>Presentation.WebServer</PageTitle>
+
+<MudThemeProvider/>
+<MudDialogProvider FullWidth="true"
+                   MaxWidth="MaxWidth.ExtraSmall"
+                   CloseButton="true"
+                   DisableBackdropClick="true"
+                   NoHeader="true"
+                   Position="DialogPosition.Center"
+                   CloseOnEscapeKey="true" />
+<MudSnackbarProvider/>
+
+<MudLayout>
+    <MudAppBar Elevation="0">
+        <MudIconButton Style="height: 100%; aspect-ratio: 1/1; margin-left: -24px;" Size="Size.Large" Icon="@Icons.Material.Filled.Menu" Variant="Variant.Filled" Color="Color.Tertiary" OnClick="@((e) => DrawerToggle())" />
+        <MudText Typo="Typo.h1" Color="Color.Inherit" Class="ml-1">@applicationName</MudText>
+        <MudSpacer />
+        <AuthorizeView>
+            <Authorized>
+                <UserControlComponent></UserControlComponent>
+                <!--<UserPopoverComponent/>-->
+            </Authorized>
+            <NotAuthorized>
+                <form action="/login" method="get">
+                    <!-- Href="/login?redirectUri=/" -->
+                    <MudButton Variant="Variant.Filled" Color="Color.Tertiary" ButtonType="ButtonType.Submit">Log in</MudButton>
+                </form>
+            </NotAuthorized>
+        </AuthorizeView>
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="1">
+        <MudDrawerHeader>
+            <MudImage Src="https://d3w5dxa1iffln.cloudfront.net/1.0.54/images/logo.png"></MudImage>
+        </MudDrawerHeader>
+        <NavMenu />
+    </MudDrawer>
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+</MudLayout>

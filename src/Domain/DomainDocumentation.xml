@@ -1,0 +1,485 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Domain</name>
+    </assembly>
+    <members>
+        <member name="T:Domain.Bases.BaseAuditEntity">
+            <summary>
+            Represents a base entity that includes audit information such as creation and modification dates and the users who performed these actions.
+            </summary>
+        </member>
+        <member name="P:Domain.Bases.BaseAuditEntity.Created">
+            <summary>
+            Gets or sets the date and time the entity was created.
+            </summary>
+        </member>
+        <member name="P:Domain.Bases.BaseAuditEntity.CreatedBy">
+            <summary>
+            Gets or sets the name of the user who created the entity.
+            </summary>
+        </member>
+        <member name="P:Domain.Bases.BaseAuditEntity.LastModified">
+            <summary>
+            Gets or sets the date and time the entity was last modified.
+            </summary>
+        </member>
+        <member name="P:Domain.Bases.BaseAuditEntity.LastModifiedBy">
+            <summary>
+            Gets or sets the name of the user who last modified the entity.
+            </summary>
+        </member>
+        <member name="T:Domain.Bases.BaseAuditTrailEntity">
+            <summary>
+            Base Audit trail entity used to signal that audit trails 
+            need to be written. 
+            </summary>
+        </member>
+        <member name="T:Domain.Bases.BaseEntity">
+            <summary>
+            Represents a base entity class for all database entities.
+            This class expands on the domain events of MediatR but is hidden from the database.
+            It's important to note that the Id property can only be a long type and should remain consistent across all entities.
+            </summary>
+        </member>
+        <member name="P:Domain.Bases.BaseEntity.Id">
+            <summary>
+            Gets or sets the unique identifier of the entity.
+            </summary>
+        </member>
+        <member name="M:Domain.Bases.BaseEntity.DomainEvents">
+            <summary>
+            Gets the collection of domain events associated with the entity.
+            </summary>
+            <returns>An immutable collection of domain events.</returns>
+        </member>
+        <member name="M:Domain.Bases.BaseEntity.AddDomainEvent(Domain.Bases.BaseEvent)">
+            <summary>
+            Adds a domain event to the entity.
+            </summary>
+            <param name="domainEvent">The domain event to add.</param>
+        </member>
+        <member name="M:Domain.Bases.BaseEntity.RemoveDomainEvent(Domain.Bases.BaseEvent)">
+            <summary>
+            Removes a domain event from the entity.
+            </summary>
+            <param name="domainEvent">The domain event to remove.</param>
+        </member>
+        <member name="M:Domain.Bases.BaseEntity.ClearDomainEvents">
+            <summary>
+            Clears all domain events from the entity.
+            </summary>
+        </member>
+        <member name="T:Domain.Bases.BaseEvent">
+            <summary>
+            Base event class that implements the INotification from MediatR
+            Use to create entity events.
+            </summary>
+        </member>
+        <member name="T:Domain.Bases.BaseUser">
+            <summary>
+            Base class for user. 
+            Inherits from Microsoft.AspNetCore.Identity.IdentityUser. 
+            </summary>
+        </member>
+        <member name="P:Domain.Bases.BaseUser.Identifier">
+            <summary>
+            Auth0 identifier
+            </summary>
+        </member>
+        <member name="T:Domain.Bases.ValueObject">
+            <summary>
+            Base class for ValueObject operations.
+            Usefull for creating non-primative objects
+            </summary>
+        </member>
+        <member name="M:Domain.Bases.ValueObject.EqualOperator(Domain.Bases.ValueObject,Domain.Bases.ValueObject)">
+            <summary>
+            
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Domain.Bases.ValueObject.NotEqualOperator(Domain.Bases.ValueObject,Domain.Bases.ValueObject)">
+            <summary>
+            
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Domain.Bases.ValueObject.GetEqualityComponents">
+            <summary>
+            Get the objects that qualify for equality
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Domain.Bases.ValueObject.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Domain.Bases.ValueObject.GetHashCode">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Domain.Entities.AccountDetails">
+            <summary>
+            Represents the details of an account.
+            </summary>
+        </member>
+        <member name="P:Domain.Entities.AccountDetails.Roles">
+            <summary>
+            Gets or sets the roles associated with the account.
+            </summary>
+        </member>
+        <member name="P:Domain.Entities.AccountDetails.Psid">
+            <summary>
+            Gets or sets the PSID (Personnel Security Identifier) of the account.
+            </summary>
+        </member>
+        <member name="P:Domain.Entities.AccountDetails.CustomerSiteId">
+            <summary>
+            Gets or sets the customer site ID associated with the account.
+            </summary>
+        </member>
+        <member name="P:Domain.Entities.AccountDetails.Trucks">
+            <summary>
+            Gets or sets the list of trucks associated with the account.
+            </summary>
+        </member>
+        <member name="P:Domain.Entities.AccountDetails.Sites">
+            <summary>
+            Gets or sets the list of sites associated with the account.
+            </summary>
+        </member>
+        <member name="T:Domain.Entities.AuditEntity">
+            <summary>
+            Represents an entity for storing audit information in the database.
+            Inherits from <see cref="T:Domain.Bases.BaseEntity"/>.
+            </summary>
+        </member>
+        <member name="P:Domain.Entities.AuditEntity.TargetId">
+            <summary>
+            Gets or sets the ID of the target entity that was audited.
+            </summary>
+        </member>
+        <member name="P:Domain.Entities.AuditEntity.DateTime">
+            <summary>
+            Gets or sets the date and time of the audit event.
+            </summary>
+        </member>
+        <member name="P:Domain.Entities.AuditEntity.Table">
+            <summary>
+            Gets or sets the name of the table where the target entity is stored.
+            </summary>
+        </member>
+        <member name="P:Domain.Entities.AuditEntity.User">
+            <summary>
+            Gets or sets the name of the user who performed the audit action.
+            </summary>
+        </member>
+        <member name="P:Domain.Entities.AuditEntity.Value">
+            <summary>
+            Gets or sets the new value of the audited entity after the change.
+            </summary>
+        </member>
+        <member name="P:Domain.Entities.AuditEntity.Change">
+            <summary>
+            Gets or sets the type of change that was made to the audited entity.
+            </summary>
+        </member>
+        <member name="T:Domain.Entities.Truck">
+            <summary>
+            Represents a truck entity with audit trail support.
+            </summary>
+        </member>
+        <member name="P:Domain.Entities.Truck.Name">
+            <summary>
+            Gets or sets the name of the truck.
+            </summary>
+        </member>
+        <member name="P:Domain.Entities.Truck.Items">
+            <summary>
+            Gets or sets the list of items associated with the truck.
+            </summary>
+        </member>
+        <member name="M:Domain.Entities.Truck.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Domain.Entities.Truck"/> class.
+            </summary>
+        </member>
+        <member name="P:Domain.Entities.Truck.Paint">
+            <summary>
+            Gets or sets the paint of the truck.
+            </summary>
+        </member>
+        <member name="T:Domain.Entities.TruckPart">
+            <summary>
+            Represents a part of a truck.
+            </summary>
+        </member>
+        <member name="P:Domain.Entities.TruckPart.TruckId">
+            <summary>
+            Gets or sets the ID of the truck that this part belongs to.
+            </summary>
+        </member>
+        <member name="P:Domain.Entities.TruckPart.Name">
+            <summary>
+            Gets or sets the name of the truck part.
+            </summary>
+            <remarks>
+            This property can be null if the truck part doesn't have a name.
+            </remarks>
+        </member>
+        <member name="P:Domain.Entities.TruckPart.Condition">
+            <summary>
+            Gets or sets the condition of the truck part.
+            </summary>
+        </member>
+        <member name="P:Domain.Entities.TruckPart.Code">
+            <summary>
+            Gets or sets the code of the truck part.
+            </summary>
+            <remarks>
+            This property can be null if the truck part doesn't have a code.
+            </remarks>
+        </member>
+        <member name="T:Domain.Enums.ConditionEnum">
+            <summary>
+            Represents the condition of a truck part.
+            </summary>
+        </member>
+        <member name="F:Domain.Enums.ConditionEnum.Unknown">
+            <summary>
+            The condition of the truck part is unknown.
+            </summary>
+        </member>
+        <member name="F:Domain.Enums.ConditionEnum.New">
+            <summary>
+            The truck part is new.
+            </summary>
+        </member>
+        <member name="F:Domain.Enums.ConditionEnum.Used">
+            <summary>
+            The truck part is used.
+            </summary>
+        </member>
+        <member name="T:Domain.Events.Trucks.TruckPartCreatedEvent">
+            <summary>
+            Event to be called when a truck part is created.
+            </summary>
+        </member>
+        <member name="M:Domain.Events.Trucks.TruckPartCreatedEvent.#ctor(Domain.Entities.TruckPart)">
+            <summary>
+            Event to be called when a truck part is created.
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="P:Domain.Events.Trucks.TruckPartCreatedEvent.Item">
+            <summary>
+            Stores Item
+            </summary>
+        </member>
+        <member name="T:Domain.Exceptions.NonCatalogedPaintException">
+            <summary>
+            Exception called when Paint Color has not been Cataloged.
+            </summary>
+        </member>
+        <member name="M:Domain.Exceptions.NonCatalogedPaintException.#ctor(System.String)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="color">Hex of color</param>
+        </member>
+        <member name="T:Domain.Exceptions.NonCatalogedTruckModelException">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:Domain.Exceptions.NonCatalogedTruckModelException.#ctor(System.String)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="truckCode"></param>
+        </member>
+        <member name="T:Domain.ValueObjects.Paint">
+            <summary>
+            Represents a color of paint.
+            </summary>
+        </member>
+        <member name="M:Domain.ValueObjects.Paint.From(System.String)">
+            <summary>
+            Creates a new instance of the <see cref="T:Domain.ValueObjects.Paint"/> class with the specified hex color code.
+            </summary>
+            <param name="hex">The hex color code of the paint.</param>
+            <returns>A new instance of the <see cref="T:Domain.ValueObjects.Paint"/> class with the specified hex color code.</returns>
+            <exception cref="T:Domain.Exceptions.NonCatalogedPaintException">Thrown if the hex color code is not supported.</exception>
+        </member>
+        <member name="M:Domain.ValueObjects.Paint.GetEqualityComponents">
+            <summary>
+            Gets the equality components for the paint.
+            </summary>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> containing the equality components for the paint.</returns>
+        </member>
+        <member name="M:Domain.ValueObjects.Paint.op_Implicit(Domain.ValueObjects.Paint)~System.String">
+            <summary>
+            Converts the <see cref="T:Domain.ValueObjects.Paint"/> object to a string.
+            </summary>
+            <param name="paint">The <see cref="T:Domain.ValueObjects.Paint"/> object to convert to a string.</param>
+            <returns>The hex color code of the <see cref="T:Domain.ValueObjects.Paint"/> object.</returns>
+        </member>
+        <member name="M:Domain.ValueObjects.Paint.op_Explicit(System.String)~Domain.ValueObjects.Paint">
+            <summary>
+            Converts a hex color code to a <see cref="T:Domain.ValueObjects.Paint"/> object.
+            </summary>
+            <param name="hex">The hex color code to convert to a <see cref="T:Domain.ValueObjects.Paint"/> object.</param>
+            <returns>A new instance of the <see cref="T:Domain.ValueObjects.Paint"/> class with the specified hex color code.</returns>
+        </member>
+        <member name="P:Domain.ValueObjects.Paint.Hex">
+            <summary>
+            Gets the hex color code of the paint.
+            </summary>
+        </member>
+        <member name="P:Domain.ValueObjects.Paint.White">
+            <summary>
+            Gets a <see cref="T:Domain.ValueObjects.Paint"/> object that represents the color white.
+            </summary>
+        </member>
+        <member name="P:Domain.ValueObjects.Paint.Black">
+            <summary>
+            Gets a <see cref="T:Domain.ValueObjects.Paint"/> object that represents the color black.
+            </summary>
+        </member>
+        <member name="P:Domain.ValueObjects.Paint.Unkown">
+            <summary>
+            Gets a <see cref="T:Domain.ValueObjects.Paint"/> object that represents an unknown color.
+            </summary>
+        </member>
+        <member name="P:Domain.ValueObjects.Paint.Red">
+            <summary>
+            Gets a <see cref="T:Domain.ValueObjects.Paint"/> object that represents the color red.
+            </summary>
+        </member>
+        <member name="P:Domain.ValueObjects.Paint.Yellow">
+            <summary>
+            Gets a <see cref="T:Domain.ValueObjects.Paint"/> object that represents of the color yellow.
+            </summary>
+        </member>
+        <member name="P:Domain.ValueObjects.Paint.SupportedPaintColors">
+            <summary>
+            Gets a collection of all the supported paint colors.
+            </summary>
+        </member>
+        <member name="T:Domain.ValueObjects.TruckModels">
+            <summary>
+            A value object representing different truck models.
+            </summary>
+        </member>
+        <member name="M:Domain.ValueObjects.TruckModels.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Domain.ValueObjects.TruckModels"/> class.
+            </summary>
+            <param name="truckCode">The code representing the truck model.</param>
+        </member>
+        <member name="M:Domain.ValueObjects.TruckModels.From(System.String)">
+            <summary>
+            Returns a new instance of the <see cref="T:Domain.ValueObjects.TruckModels"/> class with the specified truck code.
+            </summary>
+            <param name="truckCode">The code representing the truck model.</param>
+            <returns>A new instance of the <see cref="T:Domain.ValueObjects.TruckModels"/> class with the specified truck code.</returns>
+            <exception cref="T:Domain.Exceptions.NonCatalogedPaintException">Thrown when the specified truck code is not in the list of supported truck models.</exception>
+        </member>
+        <member name="P:Domain.ValueObjects.TruckModels.SupportedTruckModels">
+            <summary>
+            Gets the list of supported truck models.
+            </summary>
+        </member>
+        <member name="M:Domain.ValueObjects.TruckModels.op_Implicit(Domain.ValueObjects.TruckModels)~System.String">
+            <summary>
+            Implicitly converts a <see cref="T:Domain.ValueObjects.TruckModels"/> object to a string.
+            </summary>
+            <param name="truckModel">The <see cref="T:Domain.ValueObjects.TruckModels"/> object to convert.</param>
+            <returns>The string representation of the specified <see cref="T:Domain.ValueObjects.TruckModels"/> object.</returns>
+        </member>
+        <member name="M:Domain.ValueObjects.TruckModels.op_Explicit(System.String)~Domain.ValueObjects.TruckModels">
+            <summary>
+            Explicitly converts a string to a <see cref="T:Domain.ValueObjects.TruckModels"/> object.
+            </summary>
+            <param name="truckCode">The string representation of the truck model.</param>
+            <returns>A new instance of the <see cref="T:Domain.ValueObjects.TruckModels"/> class with the specified truck code.</returns>
+        </member>
+        <member name="P:Domain.ValueObjects.TruckModels.TruckCode">
+            <summary>
+            Gets the code representing the truck model.
+            </summary>
+        </member>
+        <member name="P:Domain.ValueObjects.TruckModels.Garbage">
+            <summary>
+            Gets a <see cref="T:Domain.ValueObjects.TruckModels"/> object representing the garbage truck model.
+            </summary>
+        </member>
+        <member name="P:Domain.ValueObjects.TruckModels.Hauling">
+            <summary>
+            Gets a <see cref="T:Domain.ValueObjects.TruckModels"/> object representing the hauling truck model.
+            </summary>
+        </member>
+        <member name="P:Domain.ValueObjects.TruckModels.Refrigerant">
+            <summary>
+            Gets a <see cref="T:Domain.ValueObjects.TruckModels"/> object representing the refrigerant truck model.
+            </summary>
+        </member>
+        <member name="M:Domain.ValueObjects.TruckModels.GetEqualityComponents">
+            <summary>
+            Returns an enumerator that iterates through the equality components of the <see cref="T:Domain.ValueObjects.TruckModels"/> object.
+            </summary>
+            <returns>An enumerator that iterates through the equality components of the <see cref="T:Domain.ValueObjects.TruckModels"/> object.</returns>
+        </member>
+        <member name="T:Infrastructure.Security.LegacyUser">
+            <summary>
+            Represents a legacy user in the Tris system. This class is used instead of Guids.
+            Inherits from BaseUser.
+            </summary>
+        </member>
+        <member name="P:Infrastructure.Security.LegacyUser.GuidId">
+            <summary>
+            The Guid identifier for this user.
+            </summary>
+        </member>
+        <member name="P:Infrastructure.Security.LegacyUser.UserId">
+            <summary>
+            The unique identifier for this user.
+            </summary>
+        </member>
+        <member name="P:Infrastructure.Security.LegacyUser.ApplicationShortName">
+            <summary>
+            The short name of the application associated with this user.
+            </summary>
+        </member>
+        <member name="P:Infrastructure.Security.LegacyUser.Username">
+            <summary>
+            The username of this user.
+            </summary>
+        </member>
+        <member name="P:Infrastructure.Security.LegacyUser.Fullname">
+            <summary>
+            The full name of this user.
+            </summary>
+        </member>
+        <member name="P:Infrastructure.Security.LegacyUser.Roles">
+            <summary>
+            The roles assigned to this user.
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Security.LegacyUser.#ctor">
+            <summary>
+            Initializes a new instance of the LegacyUser class.
+            </summary>
+        </member>
+    </members>
+</doc>

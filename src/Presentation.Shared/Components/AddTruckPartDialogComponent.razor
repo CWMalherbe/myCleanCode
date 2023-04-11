@@ -1,0 +1,39 @@
+﻿@using Application.Entities.Trucks;
+@using Domain.Enums
+@inject ISnackbar Snackbar
+
+<MudDialog>
+    <DialogContent>
+        <MudText Typo="Typo.h1">Create Truck Part Form</MudText>
+        <EditForm EditContext="@editContext">
+            <DataAnnotationsValidator />
+            @if (loadedTrucks == true)
+            {
+                <MudSelect T="long" Label="Truck" AnchorOrigin="Origin.BottomCenter" @bind-Value="entityDTO.TruckId">
+                    @if (Trucks != null)
+                    {
+                        foreach (TruckDTO truck in Trucks)
+                        {
+                            <MudSelectItem T="long" Value="@truck.Id">@truck.Id - @truck.Name</MudSelectItem>
+                        }
+                    }
+                </MudSelect>
+            }
+            <MudTextField Label="Part Name" @bind-Value="entityDTO.Name" For="@(() => entityDTO.Name)" />
+            <br />
+            <MudTextField Label="Part Code" @bind-Value="entityDTO.Code" For="@(() => entityDTO.Code)" />
+            <br />
+            <MudSelect T="ConditionEnum" Label="Condition" AnchorOrigin="Origin.BottomCenter" @bind-Value="entityDTO.ConditionValue">
+                @foreach (ConditionEnum item in Enum.GetValues(typeof(ConditionEnum)))
+                {
+                    <MudSelectItem T="ConditionEnum" Value="@item"></MudSelectItem>
+                }
+            </MudSelect>
+            <br />
+        </EditForm>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="@Submit">Ok</MudButton>
+    </DialogActions>
+</MudDialog>

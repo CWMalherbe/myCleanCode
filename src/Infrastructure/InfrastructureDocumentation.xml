@@ -1,0 +1,578 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Infrastructure</name>
+    </assembly>
+    <members>
+        <member name="T:Infrastructure.ConfigureServices">
+            <summary>
+            Infrastructure building instructions for the Infrastructure layer. 
+            </summary>
+        </member>
+        <member name="M:Infrastructure.ConfigureServices.AddInfrastructureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Infrastructure building instructions for the Infrastructure layer. 
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <returns></returns>
+            <exception cref="T:Application.Exception.NotFoundException"></exception>
+        </member>
+        <member name="M:Infrastructure.ConfigureServices.JwtBearerOptions(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Because both the API and the WebServices makes use Jwt, I made a single source
+            </summary>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Infrastructure.ConfigureServices.AddAPIAuthentication(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Generalised snippet of the code needed to run JwtAuthentication with 
+            a user hybrid system.
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Infrastructure.ConfigureServices.AddWebAPPAuthentication(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Adds the wep app authentication. 
+            Pass the service and configuration. 
+            This Authentication system uses both the cookie and openid connect. 
+            The openid connect tries to authenticat with auth0
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Infrastructure.Contexts.DatabaseContext.ContextImplementation.ApplicationContext">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.ContextImplementation.ApplicationContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Infrastructure.Contexts.DatabaseContext.ContextImplementation.ApplicationContext},MediatR.IMediator)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="options"></param>
+            <param name="mediatR"></param>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.ContextImplementation.ApplicationContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.ContextImplementation.ApplicationContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.ContextImplementation.ApplicationContext.Set``1">
+            <summary>
+            
+            </summary>
+            <typeparam name="U"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.ContextImplementation.ApplicationContext.SaveChangesAsync(System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.ContextImplementation.ApplicationContext.Audit">
+            <summary>
+            Scans for changes in audit based entities performs appropriate actions. 
+            </summary>
+            <returns>A list of Audit Entity Items to be saved</returns>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.ContextImplementation.ApplicationContext.GetMetaData(Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry{Domain.Bases.BaseAuditTrailEntity})">
+            <summary>
+            Gets the Schema name and Table name
+            </summary>
+            <param name="entry"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Infrastructure.Contexts.DatabaseContext.ContextImplementation.AuditContext">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.ContextImplementation.AuditContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Infrastructure.Contexts.DatabaseContext.ContextImplementation.AuditContext},MediatR.IMediator)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="options"></param>
+            <param name="mediatR"></param>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.ContextImplementation.AuditContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.ContextImplementation.AuditContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="T:Infrastructure.Contexts.DatabaseContext.ContextImplementation.AuthenticationContext">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.ContextImplementation.AuthenticationContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Infrastructure.Contexts.DatabaseContext.ContextImplementation.AuthenticationContext},MediatR.IMediator)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="options"></param>
+            <param name="mediatR"></param>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.ContextImplementation.AuthenticationContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.ContextImplementation.AuthenticationContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="T:Infrastructure.Contexts.DatabaseContext.DatabaseInitialiser`1">
+            <summary>
+            Initialised a specific database
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.DatabaseInitialiser`1.#ctor(Application.Interfaces.ILogger,`0)">
+            <summary>
+            Initialised a specific database
+            </summary>
+            <param name="logger"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.DatabaseInitialiser`1.InitialiseAsync">
+            <summary>
+            Performs Migrations at the start. 
+            If one does not want migrations, one should not add this to the startup. 
+            </summary>
+        </member>
+        <member name="T:Infrastructure.Contexts.DatabaseContext.DatabaseManager`1">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.DatabaseManager`1.#ctor(Infrastructure.Contexts.DatabaseContext.ContextImplementation.ApplicationContext,Infrastructure.Contexts.DatabaseContext.ContextImplementation.AuditContext,Infrastructure.Contexts.DatabaseContext.ContextImplementation.AuthenticationContext)">
+            <summary>
+            Editable constructor used for the creation of different repositories
+            </summary>
+            <param name="applicationContext"></param>
+            <param name="auditContext"></param>
+            <param name="authenticationContext"></param>
+        </member>
+        <member name="P:Infrastructure.Contexts.DatabaseContext.DatabaseManager`1.ApplicationRepository">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:Infrastructure.Contexts.DatabaseContext.DatabaseManager`1.AuditRepository">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:Infrastructure.Contexts.DatabaseContext.DatabaseManager`1.AuthenticationRepository">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="T:Infrastructure.Contexts.DatabaseContext.DatabaseRepository`1">
+            <summary>
+            Implementation of the generic IDatabaseRepository.
+            Please see the IDatabaseRepository comments to see my 
+            thoughts on how to expand to a DatabaseRepositoryManager 
+            for multiple DB's.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.DatabaseRepository`1.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
+            <summary>
+            Constrcuts a new instance of a data repository
+            </summary>
+            <param name="databaseContext"></param>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.DatabaseRepository`1.GetByIdAsync(System.Object,System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="id">The id of the entity</param>
+            <param name="token"></param>
+            <returns>Returns an entity or null"/></returns>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.DatabaseRepository`1.InsertAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="entity"></param>
+            <param name="token"></param>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.DatabaseRepository`1.SaveChangesAsync(System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.DatabaseRepository`1.UpdateAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="entity"></param>
+            <param name="token"></param>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.DatabaseRepository`1.FindEntityAsync(`0,System.Threading.CancellationToken)">
+             <summary>
+            <inheritdoc/>
+             </summary>
+             <param name="entity"></param>
+             <param name="token"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.DatabaseRepository`1.DeleteAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="entity"></param>
+            <param name="token"></param>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.DatabaseRepository`1.QuerySQL(System.String,System.Object[])">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.DatabaseRepository`1.ExecuteSQL(System.String,System.Object[])">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.DatabaseRepository`1.GetByIdAsyncWithIncludes(System.Int64,System.String[],System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            I haven't figured out how to make this generic, but there should be a way.
+            I have added code to focus figuring it out, but have not gotten there yet.
+            </summary>
+            <param name="id">The id of the entity</param>
+            <param name="includes"></param>
+            <param name="token"></param>
+            <returns>Returns an entity or null"/></returns>
+        </member>
+        <member name="M:Infrastructure.Contexts.DatabaseContext.DatabaseRepository`1.GetAllEntitiesAsync(System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:Infrastructure.Contexts.DatabaseContext.DatabaseRepository`1.Table">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:Infrastructure.Contexts.DatabaseContext.DatabaseRepository`1.TableNoTracking">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:Infrastructure.Contexts.DatabaseContext.DatabaseRepository`1.Entities">
+            <summary>
+            Access All the entities.
+            </summary>
+        </member>
+        <member name="T:Infrastructure.EntityConfigurations.AuditEntityConfiguration">
+            <summary>
+            Audit entity configuration
+            </summary>
+        </member>
+        <member name="M:Infrastructure.EntityConfigurations.AuditEntityConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Domain.Entities.AuditEntity})">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:Infrastructure.EntityConfigurations.TruckConfiguration">
+            <summary>
+            Truck configuration
+            </summary>
+        </member>
+        <member name="M:Infrastructure.EntityConfigurations.TruckConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Domain.Entities.Truck})">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:Infrastructure.EntityConfigurations.TruckPartConfiguration">
+            <summary>
+            Truck part configuration
+            </summary>
+        </member>
+        <member name="M:Infrastructure.EntityConfigurations.TruckPartConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Domain.Entities.TruckPart})">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:Infrastructure.Extentions.ConfigureDatabaseExtention">
+            <summary>
+            Helping functions that allow for the database configureations
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Extentions.ConfigureDatabaseExtention.AddDbContext``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Adds specific database context
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <exception cref="T:Application.Exception.NotFoundException"></exception>
+        </member>
+        <member name="M:Infrastructure.Extentions.ConfigureDatabaseExtention.InitializeDatabases``1(Microsoft.AspNetCore.Builder.WebApplication)">
+            <summary>
+            Initializes the specific databases
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Infrastructure.Extentions.MediatRExtensions">
+            <summary>
+            Extentions for mediatR
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Extentions.MediatRExtensions.DispatchDomainEvents(MediatR.IMediator,Microsoft.EntityFrameworkCore.DbContext)">
+            <summary>
+            Function that allows us to publish domain events for all the entities actioned.
+            It also clears all the events from the entities.
+            Unsure what would happen should the server crash.
+            </summary>
+            <param name="mediatR"></param>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Infrastructure.Extentions.SecurityExtentions">
+            <summary>
+            Provides extension methods related to security functionality.
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Extentions.SecurityExtentions.ExtractRolesFromExternalSource(Microsoft.AspNetCore.Authentication.OpenIdConnect.TokenValidatedContext)">
+            <summary>
+            Extracts roles from an external source and adds them to the current user's claims.
+            </summary>
+            <param name="context">The context of the token being validated.</param>
+            <returns>A task representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:Infrastructure.Factory.LoggingFactory">
+            <summary>
+            Factory used to create logger. 
+            I prefer to use Serilog. Quite fast. Modern. 
+            It also allows us to use most log viewing tools like Grafana and Prometheus.
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Factory.LoggingFactory.GetSeriLogger">
+            <summary>
+            Generates a SeriLogger
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Infrastructure.Security.IdentityService">
+            <summary>
+            Security service implementation of IdentityService. 
+            Currently not implemented.
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Security.IdentityService.#ctor(Microsoft.AspNetCore.Identity.UserManager{Domain.Bases.BaseUser},Microsoft.AspNetCore.Identity.IUserClaimsPrincipalFactory{Domain.Bases.BaseUser},Microsoft.AspNetCore.Authorization.IAuthorizationService)">
+            <summary>
+            Manages users
+            </summary>
+            <param name="userManager"></param>
+            <param name="userClaimsPrincipalFactory"></param>
+            <param name="authorizationService"></param>
+        </member>
+        <member name="M:Infrastructure.Security.IdentityService.AuthorizeAsync(System.Int32,System.String)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="userId"></param>
+            <param name="policyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Infrastructure.Security.IdentityService.CreateUserAsyncWithPassword(System.String,System.String)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Infrastructure.Security.IdentityService.CreateUserAsyncWithIdentifier(System.String,System.String)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="userName"></param>
+            <param name="identifier"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Infrastructure.Security.IdentityService.DeleteUserAsync(System.Int32)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Infrastructure.Security.IdentityService.DeleteUserAsync(Domain.Bases.BaseUser)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Infrastructure.Security.IdentityService.GetUserNameAsync(System.Int32)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Infrastructure.Security.IdentityService.IsInRoleAsync(System.Int32,System.String)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="userId"></param>
+            <param name="role"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Infrastructure.Security.IdentityService.CreateUserAsync(System.String)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="userName"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Infrastructure.Security.IdentityService.GetUserIdByIdentification(System.String)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="identifier"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Infrastructure.Security.JWTAuthentication">
+            <summary>
+            Implementaiton of JWT Authentication
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Security.JWTAuthentication.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Implementation of JWT Authentication
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:Infrastructure.Security.JWTAuthentication.GenerateToken(System.Int32)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Infrastructure.Security.JWTAuthentication.ValidateToken(System.String)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Infrastructure.Security.JWTAuthentication.ValidateUsernameFromToken(System.String)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Infrastructure.Services.CurrentUserService.CurrentUserService">
+            <summary>
+            Get userId, currently not implemented.
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Services.CurrentUserService.CurrentUserService.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor,Application.Interfaces.IJWTAuthentication)">
+            <summary>
+            Instantiates get user interface
+            </summary>
+            <param name="httpContextAccessor"></param>
+            <param name="jwtAuthentication"></param>
+        </member>
+        <member name="P:Infrastructure.Services.CurrentUserService.CurrentUserService.UserId">
+            <summary>
+            Integer value that represents the current user.
+            </summary>
+        </member>
+        <member name="P:Infrastructure.Services.CurrentUserService.CurrentUserService.UserName">
+            <summary>
+            String value that represents the current user.
+            </summary>
+        </member>
+        <member name="T:Infrastructure.Services.LoggingService.LoggingService">
+            <summary>
+            Basics of the logging service. 
+            There are some nauses when creating the logs, but 
+            sure you will figure it out.
+            </summary>
+        </member>
+        <member name="M:Infrastructure.Services.LoggingService.LoggingService.#ctor(Serilog.ILogger,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Logger Service constructor
+            </summary>
+            <param name="logger"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:Infrastructure.Services.LoggingService.LoggingService.Debug(System.String,System.String,System.Object[])">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="messageTemplate"></param>
+            <param name="callingfunction"></param>
+            <param name="objects"></param>
+        </member>
+        <member name="M:Infrastructure.Services.LoggingService.LoggingService.Error(System.String,System.String,System.Object[])">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="messageTemplate"></param>
+            <param name="callingfunction"></param>
+            <param name="objects"></param>
+        </member>
+        <member name="M:Infrastructure.Services.LoggingService.LoggingService.Fatal(System.String,System.String,System.Object[])">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="messageTemplate"></param>
+            <param name="callingfunction"></param>
+            <param name="objects"></param>
+        </member>
+        <member name="M:Infrastructure.Services.LoggingService.LoggingService.Info(System.String,System.String,System.Object[])">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="messageTemplate"></param>
+            <param name="callingfunction"></param>
+            <param name="objects"></param>
+        </member>
+        <member name="M:Infrastructure.Services.LoggingService.LoggingService.Warn(System.String,System.String,System.Object[])">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="messageTemplate"></param>
+            <param name="callingfunction"></param>
+            <param name="objects"></param>
+        </member>
+    </members>
+</doc>

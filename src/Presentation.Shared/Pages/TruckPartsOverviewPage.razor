@@ -1,0 +1,44 @@
+﻿@page "/truckpartsoverview"
+@using Application.Entities.TruckParts;
+@using Presentation.Shared.Components
+@inject IDialogService Dialog
+@inject ISnackbar Snackbar
+
+<MudPaper Outlined="true" Square="true" Class="d-flex align-center px-4 py-2">
+    <MudText Typo="Typo.h1">@PageHeader</MudText>
+    <MudSpacer />
+    <MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary" Size="Size.Small" OnClick="OpenCreateDialog">Add Truck Part</MudButton>
+</MudPaper>
+<MudContainer MaxWidth="MaxWidth.False">
+    <MudPaper Elevation="3" Class="px-4 py-4">
+        <MudToolBar>
+            <MudText Typo="Typo.h2">@TableHeader</MudText>
+            <MudSpacer />
+            <MudTextField T="string" ValueChanged="@(s=>OnSearch(s))" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+        </MudToolBar>
+        <MudTable @ref="table" ServerData="@(new Func<TableState, Task<TableData<TruckPartDTO>>>(ServerReload))" Striped="true" Hover="true" FixedHeader="true">
+            <HeaderContent>
+                <MudTh Style="text-align:center"><MudTableSortLabel SortLabel="id" T="@TruckPartDTO">Id</MudTableSortLabel></MudTh>
+                <MudTh Style="text-align:center"><MudTableSortLabel SortLabel="truckid" T="@TruckPartDTO">TruckId</MudTableSortLabel></MudTh>
+                <MudTh Style="text-align:center"><MudTableSortLabel SortLabel="name" T="@TruckPartDTO">Name</MudTableSortLabel></MudTh>
+                <MudTh Style="text-align:center"><MudTableSortLabel SortLabel="code" T="@TruckPartDTO">Code</MudTableSortLabel></MudTh>
+                <MudTh Style="text-align:center"><MudTableSortLabel SortLabel="condition" T="@TruckPartDTO">Condition</MudTableSortLabel></MudTh>
+                <MudTh Style="text-align:center">Controls</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd Style="text-align:center">@context.Id</MudTd>
+                <MudTd Style="text-align:center">@context.TruckId</MudTd>
+                <MudTd Style="text-align:center">@context.Name</MudTd>
+                <MudTd Style="text-align:center">@context.Code</MudTd>
+                <MudTd Style="text-align:center">@context.Condition</MudTd>
+                <MudTd Style="text-align:center">
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit" aria-label="Edit" OnClick="(() => OpenEditDialog(context))"></MudIconButton>
+                    <MudIconButton Color="Color.Error" Icon="@Icons.Material.Filled.Delete" aria-label="Delete" OnClick="(() => DeleteEntityDialog(context))"></MudIconButton>
+                </MudTd>
+            </RowTemplate>
+            <PagerContent>
+                <MudTablePager/>
+            </PagerContent>
+        </MudTable>
+    </MudPaper>
+</MudContainer>

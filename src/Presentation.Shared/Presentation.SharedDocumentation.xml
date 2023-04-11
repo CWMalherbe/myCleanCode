@@ -1,0 +1,528 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Presentation.Shared</name>
+    </assembly>
+    <members>
+        <member name="T:Presentation.Shared.Components.AddTruckPartDialogComponent">
+            <summary>
+            Represents a dialog component for editing a truck part.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.AddTruckPartDialogComponent.MudDialog">
+            <summary>
+            Gets or sets the <see cref="T:MudBlazor.MudDialogInstance"/> instance.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.AddTruckPartDialogComponent.entityDTO">
+            <summary>
+            Gets or sets the <see cref="T:Application.Entities.TruckParts.TruckPartDTO"/> instance.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.AddTruckPartDialogComponent.Trucks">
+            <summary>
+            Gets or sets the list of <see cref="T:Application.Entities.Trucks.TruckDTO"/> instances.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.AddTruckPartDialogComponent.loadedTrucks">
+            <summary>
+            Gets or sets a value indicating whether the trucks have been loaded.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.AddTruckPartDialogComponent.authenticationStateTask">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNetCore.Components.Authorization.AuthenticationState"/> task.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.AddTruckPartDialogComponent.editContext">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNetCore.Components.Forms.EditContext"/> instance.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Components.AddTruckPartDialogComponent.OnParametersSetAsync">
+            <summary>
+            Executes initialization logic after all parameters have been assigned.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Components.AddTruckPartDialogComponent.Submit">
+            <summary>
+            Submits the edited truck part to the server.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Components.AddTruckPartDialogComponent.Cancel">
+            <summary>
+            Cancels the dialog.
+            </summary>
+        </member>
+        <member name="T:Presentation.Shared.Components.ConfirmDeleteComponent">
+            <summary>
+            This class represents a component that confirms deletion of an item.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.ConfirmDeleteComponent.MudDialog">
+            <summary>
+            The instance of the MudDialog component that is used to display the confirmation dialog.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.ConfirmDeleteComponent.ItemName">
+            <summary>
+            The name of the item that is being deleted.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.ConfirmDeleteComponent.Path">
+            <summary>
+            Path to API
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.ConfirmDeleteComponent.Entity">
+            <summary>
+            Base for any entity to delete
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Components.ConfirmDeleteComponent.Submit">
+            <summary>
+            Closes the MudDialog component with a DialogResult of Ok, indicating that the deletion should proceed.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Components.ConfirmDeleteComponent.Cancel">
+            <summary>
+            Cancels the deletion operation by closing the MudDialog component without setting a DialogResult.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.EditOrCreateTruckComponent.ItemName">
+            <summary>
+            Item name is a placeholder to display the name on the dialog
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.EditOrCreateTruckComponent.Entity">
+            <summary>
+            Gets or sets the <see cref="T:Application.Entities.Trucks.TruckDTO"/> instance.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.EditOrCreateTruckComponent.ShouldEdit">
+            <summary>
+            True if edit mode
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.EditOrCreateTruckComponent.Path">
+            <summary>
+            Holder for the path to only keep track of one source
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Components.EditOrCreateTruckComponent.OnParametersSetAsync">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Presentation.Shared.Components.EditOrCreateTruckPartComponent.authenticationStateTask">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNetCore.Components.Authorization.AuthenticationState"/> task.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.EditOrCreateTruckPartComponent.MudDialog">
+            <summary>
+            Gets or sets the <see cref="T:MudBlazor.MudDialogInstance"/> instance.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.EditOrCreateTruckPartComponent.ItemName">
+            <summary>
+            Item name is a placeholder to display the name on the dialog
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.EditOrCreateTruckPartComponent.Entity">
+            <summary>
+            Gets or sets the <see cref="T:Application.Entities.TruckParts.TruckPartDTO"/> instance.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.EditOrCreateTruckPartComponent.ShouldEdit">
+            <summary>
+            True if edit mode
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.EditOrCreateTruckPartComponent.Path">
+            <summary>
+            Holder for the path to only keep track of one source
+            </summary>
+        </member>
+        <member name="F:Presentation.Shared.Components.EditOrCreateTruckPartComponent.trucks">
+            <summary>
+            Gets or sets the list of <see cref="T:Application.Entities.Trucks.TruckDTO"/> instances.
+            </summary>
+        </member>
+        <member name="F:Presentation.Shared.Components.EditOrCreateTruckPartComponent.editContext">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNetCore.Components.Forms.EditContext"/> instance.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Components.EditOrCreateTruckPartComponent.OnInitializedAsync">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Presentation.Shared.Components.EditOrCreateTruckPartComponent.OnParametersSetAsync">
+            <summary>
+            Executes initialization logic after all parameters have been assigned.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Components.EditOrCreateTruckPartComponent.Submit">
+            <summary>
+            Submits the edited truck part to the server.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Components.EditOrCreateTruckPartComponent.Cancel">
+            <summary>
+            Cancels the dialog.
+            </summary>
+        </member>
+        <member name="T:Presentation.Shared.Components.ReadmeComponent">
+            <summary>
+            Just a readme
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.ReadmeComponent.RenderMarkdown">
+            <summary>
+            Renders the markdown
+            </summary>
+        </member>
+        <member name="T:Presentation.Shared.Components.TruckPartTableComponent">
+            <summary>
+            Represents a component for displaying a table of truck parts.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.TruckPartTableComponent.TruckParts">
+            <summary>
+            Gets or sets a list of truck parts to display in the table.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.TruckPartTableComponent.addControls">
+            <summary>
+            Gets or sets a value indicating whether to display controls for adding new truck parts.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.TruckPartTableComponent.searchString">
+            <summary>
+            Gets or sets the search string used for filtering the table.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Components.TruckPartTableComponent.OnInitializedAsync">
+            <summary>
+            Invoked when the component has been rendered in the UI.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Components.TruckPartTableComponent.FilterFunction(Application.Entities.TruckParts.TruckPartDTO)">
+            <summary>
+            Determines whether the specified truck part should be included in the filtered table based on the current search string.
+            </summary>
+            <param name="entity">The truck part to evaluate.</param>
+            <returns>true if the truck part should be included in the filtered table; otherwise, false.</returns>
+        </member>
+        <member name="T:Presentation.Shared.Components.UserControlComponent">
+            <summary>
+            This class represents a component that displays user information, including a user image and name.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.UserControlComponent.ImageUrl">
+            <summary>
+            The URL of the image associated with the user.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.UserControlComponent.UserName">
+            <summary>
+            The name of the user.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Components.UserControlComponent.authenticationStateTask">
+            <summary>
+            The task that retrieves the user authentication state.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Components.UserControlComponent.OnInitializedAsync">
+            <summary>
+            Overrides the OnInitializedAsync method to retrieve the user image and name from the authentication state.
+            </summary>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Presentation.Shared.Components.UserPopoverComponent.OnInitializedAsync">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Presentation.Shared.Extentions.QueryStringExtentions">
+            <summary>
+            Extension methods for <see cref="T:System.Object"/> to create a query string from its properties with non-null values.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Extentions.QueryStringExtentions.GetQueryGeneralString(System.Object)">
+            <summary>
+            Returns a query string that represents the object, using property names as keys and property values as values.
+            </summary>
+            <param name="obj">The object to serialize as a query string.</param>
+            <returns>A query string representation of the object.</returns>
+        </member>
+        <member name="M:Presentation.Shared.Extentions.QueryStringExtentions.GetPaginationQueryString(Application.Bases.BasePagination)">
+            <summary>
+            Returns a query string that represents the pagination properties of the input object.
+            </summary>
+            <param name="input">The input object of type <see cref="T:Application.Bases.BasePagination"/>.</param>
+            <returns>A string that contains a URL-encoded query string for pagination.</returns>
+        </member>
+        <member name="T:Presentation.Shared.Pages.AuditOverviewPage">
+            <summary>
+            Represents the page for displaying the overview of audit entities.
+            </summary>
+        </member>
+        <member name="F:Presentation.Shared.Pages.AuditOverviewPage.PageHeader">
+            <summary>
+            The header of the page.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Pages.AuditOverviewPage.Audits">
+            <summary>
+            A list of audit entities to be displayed on the page.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Pages.AuditOverviewPage.authenticationStateTask">
+            <summary>
+            A cascading parameter that contains the authentication state of the user.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Pages.AuditOverviewPage.OnInitializedAsync">
+            <summary>
+            Initializes the component after it is added to the UI.
+            </summary>
+        </member>
+        <member name="T:Presentation.Shared.Pages.ErrorModel">
+            <summary>
+            Represents a Razor PageModel that handles errors and logs them using a specified ILogger instance.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Pages.ErrorModel.RequestId">
+            <summary>
+            Gets or sets the request ID associated with the error.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Pages.ErrorModel.ShowRequestId">
+            <summary>
+            Determines whether to show the request ID or not.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Pages.ErrorModel.#ctor(Microsoft.Extensions.Logging.ILogger{Presentation.Shared.Pages.ErrorModel})">
+            <summary>
+            Initializes a new instance of the ErrorModel class with the specified ILogger instance.
+            </summary>
+            <param name="logger">The ILogger instance to use for logging errors.</param>
+        </member>
+        <member name="M:Presentation.Shared.Pages.ErrorModel.OnGet">
+            <summary>
+            Handles the HTTP GET request for the error page.
+            </summary>
+        </member>
+        <member name="T:Presentation.Shared.Pages.Index">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="T:Presentation.Shared.Pages.LoginModel">
+            <summary>
+            LoginModel class is a PageModel used for handling login requests.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Pages.LoginModel.OnGet(System.String)">
+            <summary>
+            Asynchronously handles HTTP GET requests for login.
+            </summary>
+            <param name="redirectUri">The URL to redirect to after successful login.</param>
+        </member>
+        <member name="T:Presentation.Shared.Pages.LogoutModel">
+            <summary>
+            LogoutModel class is a PageModel used for handling logout requests.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Pages.LogoutModel.OnGetAsync">
+            <summary>
+            Asynchronously handles HTTP GET requests for logout.
+            </summary>
+            <returns>An IActionResult object representing the result of the logout operation.</returns>
+        </member>
+        <member name="T:Presentation.Shared.Pages.TruckPartsOverviewPage">
+            <summary>
+            Represents a paginated page for displaying information about truck parts.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Pages.TruckPartsOverviewPage.table">
+            <summary>
+            The table of truck parts.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Pages.TruckPartsOverviewPage.createTruckPartDTO">
+            <summary>
+            The truck part object being created.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Pages.TruckPartsOverviewPage.TableObjects">
+            <summary>
+            The list of truck parts to be displayed in the table.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Pages.TruckPartsOverviewPage.paginationProperties">
+            <summary>
+            The pagination properties used for retrieving data from the server.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Pages.TruckPartsOverviewPage.authenticationStateTask">
+            <summary>
+            The task representing the authentication state.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Pages.TruckPartsOverviewPage.OnInitializedAsync">
+            <summary>
+            Initializes the page asynchronously.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Pages.TruckPartsOverviewPage.ServerReload(MudBlazor.TableState)">
+            <summary>
+            Retrieves data from the server and returns a TableData object.
+            </summary>
+            <param name="state">The state of the table.</param>
+            <returns>A TableData object containing information about the retrieved truck parts.</returns>
+        </member>
+        <member name="M:Presentation.Shared.Pages.TruckPartsOverviewPage.OnSearch(System.String)">
+            <summary>
+            Function that handles the changes in the search bar. 
+            No checks are done here
+            </summary>
+            <param name="text">The value from the search bar</param>
+            <returns>Completed Task</returns>
+        </member>
+        <member name="M:Presentation.Shared.Pages.TruckPartsOverviewPage.OpenEditDialog(Application.Entities.TruckParts.TruckPartDTO)">
+            <summary>
+            Asynchronously opens the edit dialog for creating a new TruckPartDTO object.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Pages.TruckPartsOverviewPage.DeleteEntityDialog(Application.Entities.TruckParts.TruckPartDTO)">
+            <summary>
+            Shows a dialog box asking the user to confirm deletion of a truck.
+            If the user confirms the deletion, the truck will be deleted from the database.
+            </summary>
+            <param name="entity">The TruckPartDTO object to delete.</param>
+        </member>
+        <member name="T:Presentation.Shared.Pages.TrucksOverviewPage">
+            <summary>
+            Partial class for the trucks overview page.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Pages.TrucksOverviewPage.OnInitializedAsync">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Presentation.Shared.Pages.TrucksOverviewPage.LoadData">
+            <summary>
+            Asynchronously loads the data for the page.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Pages.TrucksOverviewPage.OpenCreateDialog">
+            <summary>
+            Asynchronously opens the dialog to add a new entity.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Pages.TrucksOverviewPage.OpenEditDialog(Application.Entities.Trucks.TruckDTO)">
+            <summary>
+            Asynchronously opens the dialog to edit an existing entity.
+            </summary>
+            <param name="entity">The truck to edit.</param>
+        </member>
+        <member name="M:Presentation.Shared.Pages.TrucksOverviewPage.OpenDeleteDialog(Application.Entities.Trucks.TruckDTO)">
+            <summary>
+            Shows a dialog box asking the user to confirm deletion of a truck.
+            If the user confirms the deletion, the truck will be deleted from the database.
+            </summary>
+            <param name="entity">The TruckDTO object to delete.</param>
+        </member>
+        <member name="M:Presentation.Shared.Pages.TrucksOverviewPage.ActionExpandButton(System.Int64)">
+            <summary>
+            Expands the action button for the given truck and loads its parts.
+            </summary>
+            <param name="id">The ID of the truck to expand the action button for.</param>
+        </member>
+        <member name="T:Presentation.Shared.Pages.TrucksOverviewPage.TableObject">
+            <summary>
+            A class that represents an object in the table, containing information about the truck entity and its associated parts
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Pages.TrucksOverviewPage.FilterFunction(System.Collections.Generic.KeyValuePair{System.Int64,Presentation.Shared.Pages.TrucksOverviewPage.TableObject})">
+            <summary>
+            A function used to filter entities in the table based on a search string
+            </summary>
+            <param name="entity">The entity to filter</param>
+            <returns>True if the entity should be included in the filtered table, false otherwise</returns>
+        </member>
+        <member name="M:Presentation.Shared.Pages.TrucksOverviewPage.LoadParts(System.Int64)">
+            <summary>
+            Asynchronously loads the list of parts for a given truck.
+            </summary>
+            <param name="truckId">The ID of the truck to load the parts for.</param>
+            <returns>A list of TruckPartDTO objects.</returns>
+        </member>
+        <member name="T:Presentation.Shared.Pages.UserPage">
+            <summary>
+            Represents a page for displaying user information.
+            </summary>
+        </member>
+        <member name="F:Presentation.Shared.Pages.UserPage.PageHeader">
+            <summary>
+            The header to display on the page.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Pages.UserPage.ImageUrl">
+            <summary>
+            The URL of the user's profile picture.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Pages.UserPage.UserName">
+            <summary>
+            The user's name.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Pages.UserPage.User">
+            <summary>
+            The current user's claims principal.
+            </summary>
+        </member>
+        <member name="P:Presentation.Shared.Pages.UserPage.authenticationStateTask">
+            <summary>
+            A parameter that receives the authentication state of the user from a parent component.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Pages.UserPage.OnInitializedAsync">
+            <summary>
+            Initializes the component asynchronously when it is added to the component tree.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:Presentation.Shared.Shared.MainLayout">
+            <summary>
+            Partial class for the main layout of the application.
+            </summary>
+        </member>
+        <member name="F:Presentation.Shared.Shared.MainLayout.applicationName">
+            <summary>
+            The name of the application.
+            </summary>
+        </member>
+        <member name="F:Presentation.Shared.Shared.MainLayout._drawerOpen">
+            <summary>
+            A boolean indicating whether the drawer is open or closed.
+            </summary>
+        </member>
+        <member name="M:Presentation.Shared.Shared.MainLayout.DrawerToggle">
+            <summary>
+            Toggles the drawer open or closed.
+            </summary>
+        </member>
+    </members>
+</doc>

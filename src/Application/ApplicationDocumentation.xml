@@ -1,0 +1,1450 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Application</name>
+    </assembly>
+    <members>
+        <member name="T:Application.Bases.BaseEntityDTO">
+            <summary>
+            BaseEntityDto for Application. 
+            Important to note that Id can only be a long. Can be altered later, but important 
+            that all Ids remain the same type.
+            Currently, the Id as set as required. Not sure if we will need it as such. 
+            Remember to include annotations to your entities.
+            </summary>
+        </member>
+        <member name="P:Application.Bases.BaseEntityDTO.Id">
+            <summary>
+            Id to be used for all entities. Please check Class comments for more details
+            </summary>
+        </member>
+        <member name="T:Application.Bases.BasePagination">
+            <summary>
+            Represents a base pagination model with default properties for page number, page size, search string, column name and direction.
+            </summary>
+        </member>
+        <member name="P:Application.Bases.BasePagination.PageNumber">
+            <summary>
+            Gets or sets the current page number.
+            </summary>
+        </member>
+        <member name="P:Application.Bases.BasePagination.PageSize">
+            <summary>
+            Gets or sets the number of items to display per page.
+            </summary>
+        </member>
+        <member name="P:Application.Bases.BasePagination.SearchString">
+            <summary>
+            Gets or sets the string to search for.
+            </summary>
+        </member>
+        <member name="P:Application.Bases.BasePagination.ColumnName">
+            <summary>
+            Gets or sets the name of the column to sort by.
+            </summary>
+        </member>
+        <member name="P:Application.Bases.BasePagination.Direction">
+            <summary>
+            Gets or sets the sort direction ('asc' or 'desc').
+            </summary>
+        </member>
+        <member name="T:Application.Entities.AuditTrail.AuditEntityDTO">
+            <summary>
+            Represents a data transfer object for an audit entity.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.AuditTrail.AuditEntityDTO.DateTime">
+            <summary>
+            Gets or sets the date and time of the audit event.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.AuditTrail.AuditEntityDTO.Table">
+            <summary>
+            Gets or sets the name of the database table associated with the audit event.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.AuditTrail.AuditEntityDTO.User">
+            <summary>
+            Gets or sets the name of the user associated with the audit event.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.AuditTrail.AuditEntityDTO.Value">
+            <summary>
+            Gets or sets the value associated with the audit event.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.AuditTrail.AuditEntityDTO.Change">
+            <summary>
+            Gets or sets the change type associated with the audit event.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.AuditTrail.AuditEntityDTO.Entity">
+            <summary>
+            Gets or sets the base entity associated with the audit event.
+            </summary>
+        </member>
+        <member name="T:Application.Entities.AuditTrail.Commands.CreateAuditCommand.CreateAuditCommand">
+            <summary>
+            Represents a command to create an audit event.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.AuditTrail.Commands.CreateAuditCommand.CreateAuditCommand.TargetId">
+            <summary>
+            Gets or sets the ID of the target entity associated with the audit event.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.AuditTrail.Commands.CreateAuditCommand.CreateAuditCommand.DateTime">
+            <summary>
+            Gets or sets the date and time of the audit event.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.AuditTrail.Commands.CreateAuditCommand.CreateAuditCommand.Table">
+            <summary>
+            Gets or sets the name of the database table associated with the audit event.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.AuditTrail.Commands.CreateAuditCommand.CreateAuditCommand.User">
+            <summary>
+            Gets or sets the name of the user associated with the audit event.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.AuditTrail.Commands.CreateAuditCommand.CreateAuditCommand.Value">
+            <summary>
+            Gets or sets the value associated with the audit event.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.AuditTrail.Commands.CreateAuditCommand.CreateAuditCommand.Change">
+            <summary>
+            Gets or sets the change type associated with the audit event.
+            </summary>
+        </member>
+        <member name="T:Application.Entities.AuditTrail.Commands.CreateAuditCommand.CreateAuditCommandHandler">
+            <summary>
+            Creates an audity entry to send the the database. 
+            Currently sends to the same database. 
+            Still need to figure out how to send to a different Database, but for now should 
+            fine to use as it. Might be useful to have a secondary repository with secondary context
+            </summary>
+        </member>
+        <member name="M:Application.Entities.AuditTrail.Commands.CreateAuditCommand.CreateAuditCommandHandler.#ctor(Application.Interfaces.IDatabaseManager{Domain.Entities.AuditEntity})">
+            <summary>
+            Creates an audity entry to send the the database. 
+            </summary>
+            <param name="databaseManager"></param>
+        </member>
+        <member name="M:Application.Entities.AuditTrail.Commands.CreateAuditCommand.CreateAuditCommandHandler.Handle(Application.Entities.AuditTrail.Commands.CreateAuditCommand.CreateAuditCommand,System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Application.Entities.AuditTrail.Queries.GetAuditTrails.GetAuditTrailsQuery">
+            <summary>
+            Query that return all audit trails
+            </summary>
+        </member>
+        <member name="T:Application.Entities.AuditTrail.Queries.GetAuditTrails.GetAuditTrailsQueryHandler">
+            <summary>
+            Internal handler that executes the request.
+            </summary>
+        </member>
+        <member name="M:Application.Entities.AuditTrail.Queries.GetAuditTrails.GetAuditTrailsQueryHandler.#ctor(Application.Interfaces.IDatabaseManager{Domain.Entities.AuditEntity})">
+            <summary>
+            Internal handler that executes the request.
+            </summary>
+            <param name="databaseManager"></param>
+        </member>
+        <member name="M:Application.Entities.AuditTrail.Queries.GetAuditTrails.GetAuditTrailsQueryHandler.Handle(Application.Entities.AuditTrail.Queries.GetAuditTrails.GetAuditTrailsQuery,System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Application.Entities.TruckParts.Commands.CreateTruckPartCommand">
+            <summary>
+            Represents a command to create a new truck part.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.Commands.CreateTruckPartCommand.TruckId">
+            <summary>
+            Gets or sets the ID of the truck associated with the new part.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.Commands.CreateTruckPartCommand.Name">
+            <summary>
+            Gets or sets the name of the new part.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.Commands.CreateTruckPartCommand.Code">
+            <summary>
+            Gets or sets the code associated with the new part.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.Commands.CreateTruckPartCommand.Condition">
+            <summary>
+            Gets or sets the condition associated with the new part.
+            </summary>
+        </member>
+        <member name="T:Application.Entities.TruckParts.Commands.CreateTruckPartCommandHandler">
+            <summary>
+            Internal create truck part command handler
+            </summary>
+        </member>
+        <member name="M:Application.Entities.TruckParts.Commands.CreateTruckPartCommandHandler.#ctor(Application.Interfaces.IDatabaseManager{Domain.Entities.TruckPart},Application.Interfaces.IValidator{Application.Entities.TruckParts.TruckPartDTO,Domain.Entities.TruckPart})">
+            <summary>
+            Internal create truck part command handler
+            </summary>
+            <param name="databaseManager"></param>
+            <param name="validator"></param>
+        </member>
+        <member name="M:Application.Entities.TruckParts.Commands.CreateTruckPartCommandHandler.Handle(Application.Entities.TruckParts.Commands.CreateTruckPartCommand,System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Application.Entities.TruckParts.Commands.DeleteTruckPartCommand">
+            <summary>
+            Represents a command to delete a truck part from the database.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.Commands.DeleteTruckPartCommand.TruckPartId">
+            <summary>
+            Gets or sets the ID of the truck part to be deleted.
+            </summary>
+        </member>
+        <member name="T:Application.Entities.TruckParts.Commands.DeleteTruckPartCommandHandler">
+            <summary>
+            Handles the <see cref="T:Application.Entities.TruckParts.Commands.DeleteTruckPartCommand"/> and deletes the corresponding truck part entity from the database.
+            </summary>
+        </member>
+        <member name="M:Application.Entities.TruckParts.Commands.DeleteTruckPartCommandHandler.#ctor(Application.Interfaces.IDatabaseManager{Domain.Entities.TruckPart})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Application.Entities.TruckParts.Commands.DeleteTruckPartCommandHandler"/> class with the specified database manager.
+            </summary>
+            <param name="databaseManager">The database manager to use for accessing the database.</param>
+        </member>
+        <member name="M:Application.Entities.TruckParts.Commands.DeleteTruckPartCommandHandler.Handle(Application.Entities.TruckParts.Commands.DeleteTruckPartCommand,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the truck part entity with the specified ID from the database.
+            </summary>
+            <param name="request">The <see cref="T:Application.Entities.TruckParts.Commands.DeleteTruckPartCommand"/> to handle.</param>
+            <param name="cancellationToken">A token to cancel the operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+            <exception cref="T:Application.Exception.NotFoundException">Thrown if the truck part entity with the specified ID is not found in the database.</exception>
+        </member>
+        <member name="T:Application.Entities.TruckParts.Commands.UpdateTruckPartCommand">
+            <summary>
+            Represents a command to update an existing truck part.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.Commands.UpdateTruckPartCommand.TruckPartId">
+            <summary>
+            Gets or sets the ID of the truck part to update.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.Commands.UpdateTruckPartCommand.TruckId">
+            <summary>
+            Gets or sets the ID of the truck associated with the part.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.Commands.UpdateTruckPartCommand.Name">
+            <summary>
+            Gets or sets the updated name of the truck part.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.Commands.UpdateTruckPartCommand.Code">
+            <summary>
+            Gets or sets the updated code associated with the truck part.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.Commands.UpdateTruckPartCommand.Condition">
+            <summary>
+            Gets or sets the condition associated with the new part.
+            </summary>
+        </member>
+        <member name="T:Application.Entities.TruckParts.Commands.UpdateTruckPartHandler">
+            <summary>
+            Internal handler responsible for updating the truck part.
+            </summary>
+        </member>
+        <member name="M:Application.Entities.TruckParts.Commands.UpdateTruckPartHandler.#ctor(Application.Interfaces.IDatabaseManager{Domain.Entities.TruckPart},Application.Interfaces.IMapper{Application.Entities.TruckParts.TruckPartDTO,Domain.Entities.TruckPart},Application.Interfaces.IValidator{Application.Entities.TruckParts.TruckPartDTO,Domain.Entities.TruckPart})">
+            <summary>
+            Internal handler responsible for updating the truck part.
+            </summary>
+            <param name="context"></param>
+            <param name="mapper"></param>
+            <param name="validator"></param>
+        </member>
+        <member name="M:Application.Entities.TruckParts.Commands.UpdateTruckPartHandler.Handle(Application.Entities.TruckParts.Commands.UpdateTruckPartCommand,System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:Application.Exception.NotFoundException"></exception>
+        </member>
+        <member name="T:Application.Entities.TruckParts.EventHandlers.TruckPartCreatedEventHandler">
+            <summary>
+            Event hanlder that implements INotificationHandler for MediatR. 
+            This is a very useful type of event handler, as one can do many things from alerts to 
+            executing stored procedures.
+            </summary>
+        </member>
+        <member name="M:Application.Entities.TruckParts.EventHandlers.TruckPartCreatedEventHandler.#ctor(Application.Interfaces.ILogger)">
+            <summary>
+            Event hanlder that implements INotificationHandler for MediatR. 
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Application.Entities.TruckParts.EventHandlers.TruckPartCreatedEventHandler.Handle(Domain.Events.Trucks.TruckPartCreatedEvent,System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="notification"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Application.Entities.TruckParts.Queries.GetAllTruckPartsQuery">
+            <summary>
+            Query for getting all truck parts.
+            </summary>
+        </member>
+        <member name="T:Application.Entities.TruckParts.Queries.GetAllTruckPartsQueryHandler">
+            <summary>
+            Handler for getting all truck parts.
+            </summary>
+        </member>
+        <member name="M:Application.Entities.TruckParts.Queries.GetAllTruckPartsQueryHandler.#ctor(Application.Interfaces.IDatabaseManager{Domain.Entities.TruckPart},Application.Interfaces.IMapper{Application.Entities.TruckParts.TruckPartDTO,Domain.Entities.TruckPart})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Application.Entities.TruckParts.Queries.GetAllTruckPartsQueryHandler"/> class.
+            </summary>
+            <param name="databaseManager">The database manager for truck parts.</param>
+            <param name="mapper">The mapper for converting between DTOs and entities.</param>
+        </member>
+        <member name="M:Application.Entities.TruckParts.Queries.GetAllTruckPartsQueryHandler.Handle(Application.Entities.TruckParts.Queries.GetAllTruckPartsQuery,System.Threading.CancellationToken)">
+            <summary>
+            Handles the request to get all truck parts.
+            </summary>
+            <param name="request">The query to get all truck parts.</param>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>A list of all truck parts.</returns>
+        </member>
+        <member name="T:Application.Entities.TruckParts.Queries.GetAllTruckPartsWithPaginationQuery">
+            <summary>
+            Represents a request object to get a paginated list of truck parts.
+            Inherits from <see cref="T:Application.Bases.BasePagination"/> and implements <see cref="T:MediatR.IRequest`1"/> interface with a response of <see cref="T:Application.Models.PaginatedList`1"/> of <see cref="T:Application.Entities.TruckParts.TruckPartDTO"/>.
+            </summary>
+        </member>
+        <member name="T:Application.Entities.TruckParts.Queries.GetAllTruckPartsWithPaginationQueryHandler">
+            <summary>
+            Represents a handler for the <see cref="T:Application.Entities.TruckParts.Queries.GetAllTruckPartsWithPaginationQuery"/> request object. 
+            Implements <see cref="T:MediatR.IRequestHandler`2"/> interface with a request of <see cref="T:Application.Entities.TruckParts.Queries.GetAllTruckPartsWithPaginationQuery"/> and a response of <see cref="T:Application.Models.PaginatedList`1"/> of <see cref="T:Application.Entities.TruckParts.TruckPartDTO"/>.
+            </summary>
+        </member>
+        <member name="M:Application.Entities.TruckParts.Queries.GetAllTruckPartsWithPaginationQueryHandler.#ctor(Application.Interfaces.IDatabaseManager{Domain.Entities.TruckPart},Application.Interfaces.IMapper{Application.Entities.TruckParts.TruckPartDTO,Domain.Entities.TruckPart})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Application.Entities.TruckParts.Queries.GetAllTruckPartsWithPaginationQueryHandler"/> class with the specified dependencies.
+            </summary>
+            <param name="databaseManager">The <see cref="T:Application.Interfaces.IDatabaseManager`1"/> object to use for database operations.</param>
+            <param name="mapper">The <see cref="T:Application.Interfaces.IMapper`2"/> object to use for mapping between entity and DTO.</param>
+        </member>
+        <member name="M:Application.Entities.TruckParts.Queries.GetAllTruckPartsWithPaginationQueryHandler.Handle(Application.Entities.TruckParts.Queries.GetAllTruckPartsWithPaginationQuery,System.Threading.CancellationToken)">
+            <summary>
+            Handles the <see cref="T:Application.Entities.TruckParts.Queries.GetAllTruckPartsWithPaginationQuery"/> request object by querying the database with pagination, search and filter, and returns a paginated list of <see cref="T:Application.Entities.TruckParts.TruckPartDTO"/>.
+            </summary>
+            <param name="request">The <see cref="T:Application.Entities.TruckParts.Queries.GetAllTruckPartsWithPaginationQuery"/> request object.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A <see cref="T:Application.Models.PaginatedList`1"/> of <see cref="T:Application.Entities.TruckParts.TruckPartDTO"/>.</returns>
+        </member>
+        <member name="M:Application.Entities.TruckParts.Queries.GetAllTruckPartsWithPaginationQueryHandler.AddFilter(Application.Entities.TruckParts.Queries.GetAllTruckPartsWithPaginationQuery,System.Linq.IQueryable{Domain.Entities.TruckPart})">
+            <summary>
+            Adds a filter to the given query based on the request's column name and direction.
+            </summary>
+            <param name="request">The request object containing the column name and direction to sort by.</param>
+            <param name="query">The query to apply the filter to.</param>
+            <returns>The query with the filter applied.</returns>
+        </member>
+        <member name="M:Application.Entities.TruckParts.Queries.GetAllTruckPartsWithPaginationQueryHandler.AddSearch(Application.Entities.TruckParts.Queries.GetAllTruckPartsWithPaginationQuery,System.Linq.IQueryable{Domain.Entities.TruckPart})">
+            <summary>
+            Adds a search filter to the given query based on the request's search string.
+            </summary>
+            <param name="request">The request object containing the search string.</param>
+            <param name="query">The query to apply the search filter to.</param>
+            <returns>The query with the search filter applied.</returns>
+        </member>
+        <member name="T:Application.Entities.TruckParts.Queries.GetTruckPartQuery">
+            <summary>
+            Query for getting a truck part.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.Queries.GetTruckPartQuery.TruckPartId">
+            <summary>
+            The ID of the truck part to get.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.Queries.GetTruckPartQuery.TruckId">
+            <summary>
+            The ID of the truck the part belongs to.
+            </summary>
+        </member>
+        <member name="T:Application.Entities.TruckParts.Queries.GetTruckPartQueryHandler">
+            <summary>
+            Handler for getting a truck part.
+            </summary>
+        </member>
+        <member name="M:Application.Entities.TruckParts.Queries.GetTruckPartQueryHandler.#ctor(Application.Interfaces.IDatabaseManager{Domain.Entities.TruckPart},Application.Interfaces.IMapper{Application.Entities.TruckParts.TruckPartDTO,Domain.Entities.TruckPart})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Application.Entities.TruckParts.Queries.GetTruckPartQueryHandler"/> class.
+            </summary>
+            <param name="databaseManager">The database manager for truck parts.</param>
+            <param name="mapper">The mapper for converting between DTOs and entities.</param>
+        </member>
+        <member name="M:Application.Entities.TruckParts.Queries.GetTruckPartQueryHandler.Handle(Application.Entities.TruckParts.Queries.GetTruckPartQuery,System.Threading.CancellationToken)">
+            <summary>
+            Handles the request to get a truck part.
+            </summary>
+            <param name="request">The query to get a truck part.</param>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>The truck part with the specified ID.</returns>
+            <exception cref="T:Application.Exception.NotFoundException">Thrown if the specified truck part is not found or does not belong to the specified truck.</exception>
+        </member>
+        <member name="T:Application.Entities.TruckParts.Queries.GetTruckPartsQuery">
+            <summary>
+            Represents a query to retrieve the parts of a truck.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.Queries.GetTruckPartsQuery.TruckId">
+            <summary>
+            Gets or initializes the ID of the truck to retrieve the parts for.
+            </summary>
+        </member>
+        <member name="T:Application.Entities.TruckParts.Queries.GetTruckPartsQueryHandler">
+            <summary>
+            Handles the <see cref="T:Application.Entities.TruckParts.Queries.GetTruckPartsQuery"/> query by retrieving the corresponding truck entity and its parts from the database.
+            </summary>
+        </member>
+        <member name="M:Application.Entities.TruckParts.Queries.GetTruckPartsQueryHandler.#ctor(Application.Interfaces.IDatabaseManager{Domain.Entities.Truck},Application.Interfaces.IMapper{Application.Entities.TruckParts.TruckPartDTO,Domain.Entities.TruckPart})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Application.Entities.TruckParts.Queries.GetTruckPartsQueryHandler"/> class with the specified database manager and mapper.
+            </summary>
+            <param name="databaseManager">The database manager to use for accessing the truck entities.</param>
+            <param name="mapper">The mapper to use for mapping between truck part entities and DTOs.</param>
+        </member>
+        <member name="M:Application.Entities.TruckParts.Queries.GetTruckPartsQueryHandler.Handle(Application.Entities.TruckParts.Queries.GetTruckPartsQuery,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves the truck entity with the ID specified in the given <paramref name="request"/> from the database,
+            maps its parts to DTOs using the configured mapper, and returns the resulting list of DTOs.
+            </summary>
+            <param name="request">The request containing the ID of the truck to retrieve the parts for.</param>
+            <param name="cancellationToken">The cancellation token to use for cancelling the operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation, whose result is the list of truck part DTOs.</returns>
+            <exception cref="T:Application.Exception.NotFoundException">Thrown if the truck entity with the specified ID is not found in the database.</exception>
+        </member>
+        <member name="T:Application.Entities.TruckParts.TruckPartDTO">
+            <summary>
+            Represents a DTO (Data Transfer Object) for a truck part.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.TruckPartDTO.TruckId">
+            <summary>
+            Gets or sets the ID of the truck associated with the truck part.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.TruckPartDTO.Name">
+            <summary>
+            Gets or sets the name of the truck part.
+            Maximum length is 64 characters.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.TruckPartDTO.Code">
+            <summary>
+            Gets or sets the code associated with the truck part.
+            Maximum length is 128 characters.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.TruckPartDTO.ConditionValue">
+            <summary>
+            Gets or sets the condition value of the truck part.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.TruckParts.TruckPartDTO.Condition">
+            <summary>
+            Gets or sets the condition of the truck part.
+            </summary>
+        </member>
+        <member name="T:Application.Entities.TruckParts.TruckPartMapping">
+            <summary>
+            Truck part mapping between entity and application entity
+            </summary>
+        </member>
+        <member name="M:Application.Entities.TruckParts.TruckPartMapping.MapDtoToEntity(Application.Entities.TruckParts.TruckPartDTO)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Entities.TruckParts.TruckPartMapping.MapEntityToDto(Domain.Entities.TruckPart)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Application.Entities.TruckParts.TruckPartValidation">
+            <summary>
+            Validates the truck parts
+            </summary>
+        </member>
+        <member name="M:Application.Entities.TruckParts.TruckPartValidation.ValidateDtoEntity(Application.Entities.TruckParts.TruckPartDTO)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="DtoEntity"></param>
+        </member>
+        <member name="M:Application.Entities.TruckParts.TruckPartValidation.ValidateEntity(Domain.Entities.TruckPart)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="T:Application.Entities.Trucks.Commands.CreateTruckCommand">
+            <summary>
+            Represents a command for creating a new truck.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.Trucks.Commands.CreateTruckCommand.Name">
+            <summary>
+            Gets or sets the name of the truck.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.Trucks.Commands.CreateTruckCommand.Items">
+            <summary>
+            Gets or sets the list of commands for creating truck parts associated with the truck.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.Trucks.Commands.CreateTruckCommand.Paint">
+            <summary>
+            Gets or sets the paint color of the truck.
+            </summary>
+        </member>
+        <member name="T:Application.Entities.Trucks.Commands.CreateTruckCommandHandler">
+            <summary>
+            Create Truck Command Handler that handles the create command request.
+            </summary>
+        </member>
+        <member name="M:Application.Entities.Trucks.Commands.CreateTruckCommandHandler.#ctor(Application.Interfaces.IDatabaseManager{Domain.Entities.Truck},Application.Interfaces.IMapper{Application.Entities.Trucks.TruckDTO,Domain.Entities.Truck},Application.Interfaces.IValidator{Application.Entities.Trucks.TruckDTO,Domain.Entities.Truck},Application.Interfaces.IValidator{Application.Entities.TruckParts.TruckPartDTO,Domain.Entities.TruckPart})">
+            <summary>
+            Create Truck Command Handler that handles the create command request.
+            </summary>
+            <param name="databaseManager"></param>
+            <param name="mapper"></param>
+            <param name="validatorTruck"></param>
+            <param name="validatorTruckPart"></param>
+        </member>
+        <member name="M:Application.Entities.Trucks.Commands.CreateTruckCommandHandler.Handle(Application.Entities.Trucks.Commands.CreateTruckCommand,System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Application.Entities.Trucks.Commands.DeleteTruckCommand">
+            <summary>
+            Represents a command to delete a truck by ID.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.Trucks.Commands.DeleteTruckCommand.TruckId">
+            <summary>
+            Gets or initializes the ID of the truck to delete.
+            </summary>
+        </member>
+        <member name="T:Application.Entities.Trucks.Commands.DeleteTruckCommandHandler">
+            <summary>
+            Handles the <see cref="T:Application.Entities.Trucks.Commands.DeleteTruckCommand"/> by deleting the corresponding truck entity from the database.
+            </summary>
+        </member>
+        <member name="M:Application.Entities.Trucks.Commands.DeleteTruckCommandHandler.#ctor(Application.Interfaces.IDatabaseManager{Domain.Entities.Truck})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Application.Entities.Trucks.Commands.DeleteTruckCommandHandler"/> class with the specified database manager.
+            </summary>
+            <param name="databaseManager">The database manager to use for accessing the truck entities.</param>
+        </member>
+        <member name="M:Application.Entities.Trucks.Commands.DeleteTruckCommandHandler.Handle(Application.Entities.Trucks.Commands.DeleteTruckCommand,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the truck entity with the ID specified in the given <paramref name="request"/> from the database.
+            </summary>
+            <param name="request">The request containing the ID of the truck to delete.</param>
+            <param name="cancellationToken">The cancellation token to use for cancelling the operation.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:Application.Entities.Trucks.Commands.UpdateTruckCommand">
+            <summary>
+            Represents a command to update a truck.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.Trucks.Commands.UpdateTruckCommand.Name">
+            <summary>
+            Gets or sets the new name for the truck.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.Trucks.Commands.UpdateTruckCommand.Paint">
+            <summary>
+            Gets or sets the new paint color for the truck.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.Trucks.Commands.UpdateTruckCommand.TruckId">
+            <summary>
+            Gets or sets the ID of the truck to update.
+            </summary>
+        </member>
+        <member name="T:Application.Entities.Trucks.Commands.UpdateTruckCommandHandler">
+            <summary>
+            Represents a handler for the <see cref="T:Application.Entities.Trucks.Commands.UpdateTruckCommand"/>.
+            </summary>
+        </member>
+        <member name="M:Application.Entities.Trucks.Commands.UpdateTruckCommandHandler.#ctor(Application.Interfaces.IDatabaseManager{Domain.Entities.Truck},Application.Interfaces.IValidator{Application.Entities.Trucks.TruckDTO,Domain.Entities.Truck})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Application.Entities.Trucks.Commands.UpdateTruckCommandHandler"/> class.
+            </summary>
+            <param name="databaseManager">The database manager.</param>
+            <param name="validator">The validator.</param>
+        </member>
+        <member name="M:Application.Entities.Trucks.Commands.UpdateTruckCommandHandler.Handle(Application.Entities.Trucks.Commands.UpdateTruckCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handles the update truck command.
+            </summary>
+            <param name="request">The update truck command.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:Application.Entities.Trucks.Queries.GetAllTrucksQuery">
+            <summary>
+            Get Truck query command object. 
+            Is empty as no pagination occurs. 
+            Should one want a truck by id, it could help to create a new get query with long id.
+            </summary>
+        </member>
+        <member name="T:Application.Entities.Trucks.Queries.GetAllTrucksQueryHandler">
+            <summary>
+            Internal handler that executes the request.
+            </summary>
+        </member>
+        <member name="M:Application.Entities.Trucks.Queries.GetAllTrucksQueryHandler.#ctor(Application.Interfaces.IMapper{Application.Entities.Trucks.TruckDTO,Domain.Entities.Truck},Application.Interfaces.IDatabaseManager{Domain.Entities.Truck})">
+            <summary>
+            Internal handler that executes the request.
+            </summary>
+            <param name="databaseManager"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:Application.Entities.Trucks.Queries.GetAllTrucksQueryHandler.Handle(Application.Entities.Trucks.Queries.GetAllTrucksQuery,System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Application.Entities.Trucks.Queries.GetTruckQuery">
+            <summary>
+            A query to retrieve a truck by its ID.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.Trucks.Queries.GetTruckQuery.TruckId">
+            <summary>
+            The ID of the truck to retrieve.
+            </summary>
+        </member>
+        <member name="T:Application.Entities.Trucks.Queries.GetTruckQueryHandler">
+            <summary>
+            A handler to process a <see cref="T:Application.Entities.Trucks.Queries.GetTruckQuery"/> and retrieve the corresponding <see cref="T:Application.Entities.Trucks.TruckDTO"/>.
+            </summary>
+        </member>
+        <member name="M:Application.Entities.Trucks.Queries.GetTruckQueryHandler.#ctor(Application.Interfaces.IDatabaseManager{Domain.Entities.Truck},Application.Interfaces.IMapper{Application.Entities.Trucks.TruckDTO,Domain.Entities.Truck})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Application.Entities.Trucks.Queries.GetTruckQueryHandler"/> class.
+            </summary>
+            <param name="databaseManager">The database manager to use for retrieving truck entities.</param>
+            <param name="mapper">The mapper to use for mapping truck entities to DTOs.</param>
+        </member>
+        <member name="M:Application.Entities.Trucks.Queries.GetTruckQueryHandler.Handle(Application.Entities.Trucks.Queries.GetTruckQuery,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Application.Entities.Trucks.TruckDTO">
+            <summary>
+            Data transfer object (DTO) for a truck entity.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.Trucks.TruckDTO.Name">
+            <summary>
+            Gets or sets the name of the truck.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.Trucks.TruckDTO.Items">
+            <summary>
+            Gets or sets the list of truck parts.
+            </summary>
+        </member>
+        <member name="P:Application.Entities.Trucks.TruckDTO.Paint">
+            <summary>
+            Gets or sets the paint color of the truck.
+            </summary>
+        </member>
+        <member name="T:Application.Entities.Trucks.TruckMapping">
+            <summary>
+            Represents a mapper for converting between <see cref="T:Application.Entities.Trucks.TruckDTO"/> and <see cref="T:Domain.Entities.Truck"/>.
+            </summary>
+        </member>
+        <member name="F:Application.Entities.Trucks.TruckMapping._mapperItem">
+            <summary>
+            The mapper used for converting between <see cref="T:Application.Entities.TruckParts.TruckPartDTO"/> and <see cref="T:Domain.Entities.TruckPart"/>.
+            </summary>
+        </member>
+        <member name="M:Application.Entities.Trucks.TruckMapping.#ctor(Application.Interfaces.IMapper{Application.Entities.TruckParts.TruckPartDTO,Domain.Entities.TruckPart})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Application.Entities.Trucks.TruckMapping"/> class.
+            </summary>
+            <param name="mapperItem">The mapper used for converting between <see cref="T:Application.Entities.TruckParts.TruckPartDTO"/> and <see cref="T:Domain.Entities.TruckPart"/>.</param>
+        </member>
+        <member name="M:Application.Entities.Trucks.TruckMapping.MapDtoToEntity(Application.Entities.Trucks.TruckDTO)">
+            <inheritdoc />
+        </member>
+        <member name="M:Application.Entities.Trucks.TruckMapping.MapEntityToDto(Domain.Entities.Truck)">
+            <inheritdoc />
+        </member>
+        <member name="T:Application.Entities.Trucks.TruckValidation">
+            <summary>
+            Represents a validator for <see cref="T:Application.Entities.Trucks.TruckDTO"/> and <see cref="T:Domain.Entities.Truck"/> objects.
+            </summary>
+        </member>
+        <member name="M:Application.Entities.Trucks.TruckValidation.ValidateDtoEntity(Application.Entities.Trucks.TruckDTO)">
+            <inheritdoc />
+        </member>
+        <member name="M:Application.Entities.Trucks.TruckValidation.ValidateEntity(Domain.Entities.Truck)">
+            <inheritdoc />
+        </member>
+        <member name="T:Application.Exception.ForbiddenAccessException">
+            <summary>
+            Not allowed to action result.
+            Should return error code 418. 
+            </summary>
+        </member>
+        <member name="M:Application.Exception.ForbiddenAccessException.#ctor">
+            <summary>
+            Not allowed to action result.
+            </summary>
+        </member>
+        <member name="T:Application.Exception.NotFoundException">
+            <summary>
+            Returns a entity in database not found.
+            This is used when finding specific entities.
+            </summary>
+        </member>
+        <member name="M:Application.Exception.NotFoundException.#ctor">
+            <summary>
+            Returns a entity in database not found.
+            </summary>
+        </member>
+        <member name="M:Application.Exception.NotFoundException.#ctor(System.String)">
+            <summary>
+            Returns a entity in database not found.
+            </summary>
+        </member>
+        <member name="M:Application.Exception.NotFoundException.#ctor(System.String,System.Exception)">
+            <summary>
+            Returns a entity in database not found.
+            </summary>
+        </member>
+        <member name="M:Application.Exception.NotFoundException.#ctor(System.String,System.Object)">
+            <summary>
+            Returns a entity in database not found.
+            </summary>
+        </member>
+        <member name="T:Application.Exception.ValidationFailedException">
+            <summary>
+            Used when entity implementation of validation failed.
+            </summary>
+        </member>
+        <member name="M:Application.Exception.ValidationFailedException.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Used when entity implementation of validation failed.
+            </summary>
+            <param name="reason"></param>
+            <param name="objectName"></param>
+            <param name="parameterName"></param>
+        </member>
+        <member name="T:Application.Extentions.MappingExtensions">
+            <summary>
+            Usefull functions to alter mapping queries
+            </summary>
+        </member>
+        <member name="M:Application.Extentions.MappingExtensions.PaginatedListAsync``1(System.Linq.IQueryable{``0},System.Int32,System.Int32)">
+            <summary>
+            Returns paginated list of item T.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="queryable">Queryable Dataset</param>
+            <param name="pageNumber">Defaults to 1</param>
+            <param name="pageSize">Defaults to 10</param>
+            <returns>paginatedList object containing a list of items T</returns>
+        </member>
+        <member name="M:Application.Extentions.MappingExtensions.ProjectToListAsync``1(System.Linq.IQueryable{``0})">
+            <summary>
+            Returns the queryable item to a list.
+            Not entiryly ueful, but can be used to perform the needed tests.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="queryable">Queryable Dataset</param>
+            <returns>Returns a dataset to list of objects</returns>
+        </member>
+        <member name="T:Application.Extentions.ValidationExtentions">
+            <summary>
+            A colletion of all the types of validatoins that need to be performed. 
+            Could have universal items, but for now just added the 64.
+            </summary>
+        </member>
+        <member name="M:Application.Extentions.ValidationExtentions.CheckString64Field(System.String,System.String,System.String)">
+            <summary>
+            Checks if string field is less than 64. 
+            Should never cut off the end, rather let user do such.
+            HINT: typeof(Truck).Name, nameof(Entity.Name)
+            </summary>
+            <param name="input">Input string to test</param>
+            <param name="objectName">Name of type (example TruckPart)</param>
+            <param name="parameterName">Parameter name of the object</param>
+            <exception cref="T:Application.Exception.ValidationFailedException"></exception>
+        </member>
+        <member name="T:Application.Interfaces.IAccessBearer">
+            <summary>
+            Provides extension methods to augment authentication
+            </summary>
+        </member>
+        <member name="M:Application.Interfaces.IAccessBearer.AddBearerToken(System.Threading.Tasks.Task{Microsoft.AspNetCore.Components.Authorization.AuthenticationState},System.Net.Http.HttpClient)">
+            <summary>
+            Used to access and add the token to the httpclient
+            </summary>
+            <param name="authenticationStateTask"></param>
+            <param name="httpClient"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Application.Interfaces.IAccessTokenStorage">
+            <summary>
+            Defines the interface for an access token storage mechanism.
+            </summary>
+        </member>
+        <member name="M:Application.Interfaces.IAccessTokenStorage.GetTokenAsync">
+            <summary>
+            Gets the access token asynchronously.
+            </summary>
+            <returns>The access token string.</returns>
+        </member>
+        <member name="M:Application.Interfaces.IAccessTokenStorage.SetTokenAsync(System.String)">
+            <summary>
+            Sets the access token asynchronously.
+            </summary>
+            <param name="token">The access token string to set.</param>
+        </member>
+        <member name="T:Application.Interfaces.ICurrentUserService">
+            <summary>
+            Not implemented yet, but used
+            </summary>
+        </member>
+        <member name="P:Application.Interfaces.ICurrentUserService.UserId">
+            <summary>
+            User Id
+            </summary>
+        </member>
+        <member name="P:Application.Interfaces.ICurrentUserService.UserName">
+            <summary>
+            User name
+            </summary>
+        </member>
+        <member name="T:Application.Interfaces.IDatabaseManager`1">
+            <summary>
+            Manages all the database Repositories
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Application.Interfaces.IDatabaseManager`1.ApplicationRepository">
+            <summary>
+            Where all the application specific stuur is stored
+            </summary>
+        </member>
+        <member name="P:Application.Interfaces.IDatabaseManager`1.AuditRepository">
+            <summary>
+            Where all the audit information is stored
+            </summary>
+        </member>
+        <member name="P:Application.Interfaces.IDatabaseManager`1.AuthenticationRepository">
+            <summary>
+            Where all the authentication information is stored
+            </summary>
+        </member>
+        <member name="T:Application.Interfaces.IDatabaseRepository`1">
+            <summary>
+            Repository to handle database interactions.
+            Note that should more than one dbcontext be needed, 
+            we need to implement a DatabaseRepository Manager. 
+            Won't we needed in all cases, but hell, why not.
+            Good example: https://code-maze.com/aspnetcore-multiple-databases-efcore/
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Application.Interfaces.IDatabaseRepository`1.Table">
+            <summary>
+            Acces the entire entity table
+            </summary>
+        </member>
+        <member name="P:Application.Interfaces.IDatabaseRepository`1.TableNoTracking">
+            <summary>
+            Acces the entire entity table
+            </summary>
+        </member>
+        <member name="M:Application.Interfaces.IDatabaseRepository`1.DeleteAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Deletes an existing entity from the repository. 
+            Should add another section to see if more than one item exists, 
+            then throw all the exceptions.
+            </summary>
+            <param name="entity"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Interfaces.IDatabaseRepository`1.GetByIdAsync(System.Object,System.Threading.CancellationToken)">
+            <summary>
+            Fetch an entity from the repository by id
+            </summary>
+            <param name="id"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Interfaces.IDatabaseRepository`1.GetByIdAsyncWithIncludes(System.Int64,System.String[],System.Threading.CancellationToken)">
+            <summary>
+            Fetch an entity from the repository by id with inlcudes
+            </summary>
+            <param name="id"></param>
+            <param name="includes"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Interfaces.IDatabaseRepository`1.InsertAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Insert a new entity into the repository
+            </summary>
+            <param name="entity"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Interfaces.IDatabaseRepository`1.UpdateAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Update an existing entity in the repository. 
+            Currently the working system adds the value as modified
+            if the object is not found.
+            Should return a result. 
+            </summary>
+            <param name="entity"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Interfaces.IDatabaseRepository`1.SaveChangesAsync(System.Threading.CancellationToken)">
+            <summary>
+            Saves all the changes made to the database repository
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Interfaces.IDatabaseRepository`1.QuerySQL(System.String,System.Object[])">
+            <summary>
+            Query with raw sql command or a stor proc
+            </summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns>IQueryable of base Entity Type</returns>
+        </member>
+        <member name="M:Application.Interfaces.IDatabaseRepository`1.ExecuteSQL(System.String,System.Object[])">
+            <summary>
+            Executes raw sql, does not return anything
+            </summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Interfaces.IDatabaseRepository`1.GetAllEntitiesAsync(System.Threading.CancellationToken)">
+            <summary>
+            Gets all entities
+            </summary>
+            <returns>An list of type T</returns>
+        </member>
+        <member name="T:Application.Interfaces.IHttpService">
+            <summary>
+            Interface representing an HTTP service that provides an instance of HttpClient.
+            </summary>
+        </member>
+        <member name="P:Application.Interfaces.IHttpService.HttpClient">
+            <summary>
+            Gets an instance of HttpClient.
+            </summary>
+        </member>
+        <member name="T:Application.Interfaces.IIdentityService">
+            <summary>
+            Good start, but not implemented
+            </summary>
+        </member>
+        <member name="M:Application.Interfaces.IIdentityService.GetUserNameAsync(System.Int32)">
+            <summary>
+            Gets the Specific username and returns as userId
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Interfaces.IIdentityService.GetUserIdByIdentification(System.String)">
+            <summary>
+            Gets the Specific identifier and returns as userId
+            </summary>
+            <param name="identifier"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Interfaces.IIdentityService.IsInRoleAsync(System.Int32,System.String)">
+            <summary>
+            Searches roles
+            </summary>
+            <param name="userId"></param>
+            <param name="role"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Interfaces.IIdentityService.AuthorizeAsync(System.Int32,System.String)">
+            <summary>
+            Authorize action
+            </summary>
+            <param name="userId"></param>
+            <param name="policyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Interfaces.IIdentityService.CreateUserAsyncWithPassword(System.String,System.String)">
+            <summary>
+            Action for creating a user. 
+            Debates on wether or not this section needs to be added to all, 
+            or just to the authentication app.
+            </summary>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Interfaces.IIdentityService.CreateUserAsyncWithIdentifier(System.String,System.String)">
+            <summary>
+            Action for creating a user. 
+            Debates on wether or not this section needs to be added to all, 
+            or just to the authentication app.
+            </summary>
+            <param name="userName"></param>
+            <param name="identifier"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Interfaces.IIdentityService.DeleteUserAsync(System.Int32)">
+            <summary>
+            Deletes the user.
+            Debates on wether or not this section needs to be added to all, 
+            or just to the authentication app.
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Application.Interfaces.IJWTAuthentication">
+            <summary>
+            Interface for JWT token creation and Validation
+            </summary>
+        </member>
+        <member name="M:Application.Interfaces.IJWTAuthentication.GenerateToken(System.Int32)">
+            <summary>
+            Generates a token from a valid userId
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Interfaces.IJWTAuthentication.ValidateToken(System.String)">
+            <summary>
+            Validates a token from context header
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Interfaces.IJWTAuthentication.ValidateUsernameFromToken(System.String)">
+            <summary>
+            Validates a suername from token header
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Application.Interfaces.ILogger">
+            <summary>
+            Just my way of doing logging, but not to everyone's liking.
+            The current setup provides us with A LOT of information.
+            It also forces to expand on the function that is doing the calling.
+            </summary>
+        </member>
+        <member name="M:Application.Interfaces.ILogger.Info(System.String,System.String,System.Object[])">
+            <summary>
+            Logs Info
+            </summary>
+            <param name="messageTemplate"></param>
+            <param name="callingfunction"></param>
+            <param name="objects"></param>
+        </member>
+        <member name="M:Application.Interfaces.ILogger.Warn(System.String,System.String,System.Object[])">
+            <summary>
+            Logs Warning
+            </summary>
+            <param name="messageTemplate"></param>
+            <param name="callingfunction"></param>
+            <param name="objects"></param>
+        </member>
+        <member name="M:Application.Interfaces.ILogger.Error(System.String,System.String,System.Object[])">
+            <summary>
+            Logs Error
+            </summary>
+            <param name="messageTemplate"></param>
+            <param name="callingfunction"></param>
+            <param name="objects"></param>
+        </member>
+        <member name="M:Application.Interfaces.ILogger.Fatal(System.String,System.String,System.Object[])">
+            <summary>
+            Logs Fatal
+            </summary>
+            <param name="messageTemplate"></param>
+            <param name="callingfunction"></param>
+            <param name="objects"></param>
+        </member>
+        <member name="M:Application.Interfaces.ILogger.Debug(System.String,System.String,System.Object[])">
+            <summary>
+            Logs Debug
+            </summary>
+            <param name="messageTemplate"></param>
+            <param name="callingfunction"></param>
+            <param name="objects"></param>
+        </member>
+        <member name="T:Application.Interfaces.IMapper`2">
+            <summary>
+            Generic mapper interface
+            </summary>
+            <typeparam name="T">Dto object as BaseEntityDto</typeparam>
+            <typeparam name="U">Domain object as BaseEntity</typeparam>
+        </member>
+        <member name="M:Application.Interfaces.IMapper`2.MapEntityToDto(`1)">
+            <summary>
+            Converts Entity to Dto
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Application.Interfaces.IMapper`2.MapDtoToEntity(`0)">
+            <summary>
+            Converts Dto to Entity
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Application.Interfaces.IValidator`2">
+            <summary>
+            Generic validator interface
+            </summary>
+            <typeparam name="T">Dto object as BaseEntityDto</typeparam>
+            <typeparam name="U">Domain object as BaseEntity</typeparam>
+        </member>
+        <member name="M:Application.Interfaces.IValidator`2.ValidateDtoEntity(`0)">
+            <summary>
+            Validates Dto
+            </summary>
+            <param name="DtoEntity"></param>
+        </member>
+        <member name="M:Application.Interfaces.IValidator`2.ValidateEntity(`1)">
+            <summary>
+            Validates Entity
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="T:Application.Middleware.AuthorizationMiddleware`2">
+            <summary>
+            Authorization Middleware implementation of MediatR
+            </summary>
+            <typeparam name="TRequest"></typeparam>
+            <typeparam name="TResponse"></typeparam>
+        </member>
+        <member name="M:Application.Middleware.AuthorizationMiddleware`2.#ctor(Application.Interfaces.ICurrentUserService,Application.Interfaces.IIdentityService)">
+            <summary>
+            Authorization Middleware implementation of MediatR
+            </summary>
+            <param name="currentUserService"></param>
+            <param name="identityService"></param>
+        </member>
+        <member name="M:Application.Middleware.AuthorizationMiddleware`2.Handle(`0,MediatR.RequestHandlerDelegate{`1},System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="T:Application.Middleware.LoggingMiddleware`1">
+            <summary>
+            Sends out logs before the action is performed. Useful for debugging.
+            </summary>
+            <typeparam name="TRequest"></typeparam>
+        </member>
+        <member name="M:Application.Middleware.LoggingMiddleware`1.#ctor(Application.Interfaces.ILogger,Application.Interfaces.ICurrentUserService,Application.Interfaces.IIdentityService)">
+            <summary>
+            Sends out logs before the action is performed. Useful for debugging.
+            </summary>
+            <param name="logger"></param>
+            <param name="currentUserService"></param>
+            <param name="identityService"></param>
+        </member>
+        <member name="M:Application.Middleware.LoggingMiddleware`1.Process(`0,System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Application.Middleware.PerformanceMiddleware`2">
+            <summary>
+            Great for logging performance details. Can be used to see when response times exceed what we expect.
+            </summary>
+            <typeparam name="TRequest"></typeparam>
+            <typeparam name="TResponse"></typeparam>
+        </member>
+        <member name="M:Application.Middleware.PerformanceMiddleware`2.#ctor(Application.Interfaces.ILogger,Application.Interfaces.ICurrentUserService,Application.Interfaces.IIdentityService)">
+            <summary>
+            Great for logging performance details. Can be used to see when response times exceed what we expect.
+            </summary>
+            <param name="logger"></param>
+            <param name="currentUserService"></param>
+            <param name="identityService"></param>
+        </member>
+        <member name="M:Application.Middleware.PerformanceMiddleware`2.Handle(`0,MediatR.RequestHandlerDelegate{`1},System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="T:Application.Middleware.UnhandledExceptionMiddleware`2">
+            <summary>
+            Middleware that puts a try catch around an entire event.
+            This is useful to catch exceptions but still throw them.
+            </summary>
+            <typeparam name="TRequest"></typeparam>
+            <typeparam name="TResponse"></typeparam>
+        </member>
+        <member name="M:Application.Middleware.UnhandledExceptionMiddleware`2.#ctor(Application.Interfaces.ILogger)">
+            <summary>
+            Middleware that puts a try catch around an entire event.
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Application.Middleware.UnhandledExceptionMiddleware`2.Handle(`0,MediatR.RequestHandlerDelegate{`1},System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="T:Application.Models.PaginatedList`1">
+            <summary>
+            Represents a paginated list of items.
+            </summary>
+            <typeparam name="T">The type of item in the list.</typeparam>
+        </member>
+        <member name="P:Application.Models.PaginatedList`1.Items">
+            <summary>
+            Gets the list of items on the current page.
+            </summary>
+        </member>
+        <member name="P:Application.Models.PaginatedList`1.PageNumber">
+            <summary>
+            Gets the page number of the current page.
+            </summary>
+        </member>
+        <member name="P:Application.Models.PaginatedList`1.TotalPages">
+            <summary>
+            Gets the total number of pages in the paginated list.
+            </summary>
+        </member>
+        <member name="P:Application.Models.PaginatedList`1.TotalCount">
+            <summary>
+            Gets the total number of items in the paginated list.
+            </summary>
+        </member>
+        <member name="M:Application.Models.PaginatedList`1.#ctor(System.Collections.Generic.List{`0},System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Application.Models.PaginatedList`1"/> class.
+            </summary>
+            <param name="items">The list of items on the current page.</param>
+            <param name="totalCount">The total number of items in the paginated list.</param>
+            <param name="pageNumber">The page number of the current page.</param>
+            <param name="totalPages">The maximum number of items per page.</param>
+        </member>
+        <member name="M:Application.Models.PaginatedList`1.CreateAsync(System.Linq.IQueryable{`0},System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance of the <see cref="T:Application.Models.PaginatedList`1"/> class asynchronously.
+            </summary>
+            <param name="source">The source queryable collection.</param>
+            <param name="pageNumber">The page number of the current page.</param>
+            <param name="pageSize">The maximum number of items per page.</param>
+            <returns>A new instance of the <see cref="T:Application.Models.PaginatedList`1"/> class.</returns>
+        </member>
+        <member name="M:Application.Models.PaginatedList`1.Create(System.Collections.Generic.IList{`0},System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance of the <see cref="T:Application.Models.PaginatedList`1"/> class.
+            </summary>
+            <param name="source">The source queryable collection.</param>
+            <param name="pageNumber">The page number of the current page.</param>
+            <param name="pageSize">The maximum number of items per page.</param>
+            <returns>A new instance of the <see cref="T:Application.Models.PaginatedList`1"/> class.</returns>
+        </member>
+        <member name="T:Application.Models.Result">
+            <summary>
+            This is a strange one, and I like the Rust language. 
+            Not quite like the rusts, but can collect errors when trying to do something.
+            Should be implemented when returning Void. Rather than return void, return Result.
+            If result contains errors, comment on it and throw exceptions. 
+            Represents the result of an operation that can either succeed or fail with a collection of errors.
+            </summary>
+        </member>
+        <member name="P:Application.Models.Result.Succeeded">
+            <summary>
+            Gets a value indicating whether the operation succeeded.
+            </summary>
+        </member>
+        <member name="P:Application.Models.Result.Errors">
+            <summary>
+            Gets an array of error messages if the operation failed.
+            </summary>
+        </member>
+        <member name="M:Application.Models.Result.#ctor(System.Boolean,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Application.Models.Result"/> class with the specified success status and errors.
+            </summary>
+            <param name="succeeded">A value indicating whether the operation succeeded.</param>
+            <param name="errors">An enumerable collection of error messages.</param>
+        </member>
+        <member name="M:Application.Models.Result.Ok">
+            <summary>
+            Returns a new instance of the <see cref="T:Application.Models.Result"/> class representing a successful operation.
+            </summary>
+            <returns>A new instance of the <see cref="T:Application.Models.Result"/> class representing a successful operation.</returns>
+        </member>
+        <member name="M:Application.Models.Result.Error(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Returns a new instance of the <see cref="T:Application.Models.Result"/> class representing a failed operation with the specified errors.
+            </summary>
+            <param name="errors">An enumerable collection of error messages.</param>
+            <returns>A new instance of the <see cref="T:Application.Models.Result"/> class representing a failed operation with the specified errors.</returns>
+        </member>
+        <member name="T:Application.Security.Commands.Authorization.AuthenticateUserCommand">
+            <summary>
+            Command for authentication by means of Auth0
+            </summary>
+        </member>
+        <member name="P:Application.Security.Commands.Authorization.AuthenticateUserCommand.Username">
+            <summary>
+            Normal username
+            </summary>
+        </member>
+        <member name="P:Application.Security.Commands.Authorization.AuthenticateUserCommand.Password">
+            <summary>
+            Normal password
+            </summary>
+        </member>
+        <member name="T:Application.Security.Commands.Authorization.AuthenticateUserCommandHandler">
+            <summary>
+            Command for authentication by means of Auth0
+            </summary>
+        </member>
+        <member name="M:Application.Security.Commands.Authorization.AuthenticateUserCommandHandler.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Application.Interfaces.IJWTAuthentication,Application.Interfaces.IIdentityService)">
+            <summary>
+            Command for authentication by means of Auth0
+            </summary>
+            <param name="configuration"></param>
+            <param name="jwtAuthentication"></param>
+            <param name="identityService"></param>
+        </member>
+        <member name="M:Application.Security.Commands.Authorization.AuthenticateUserCommandHandler.Handle(Application.Security.Commands.Authorization.AuthenticateUserCommand,System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            This code is a giantic mess, but o well
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Application.Security.Commands.Authorization.GenerateUserCommand">
+            <summary>
+            General command to create a user
+            </summary>
+        </member>
+        <member name="P:Application.Security.Commands.Authorization.GenerateUserCommand.username">
+            <summary>
+            Common username used for both email and username
+            </summary>
+        </member>
+        <member name="P:Application.Security.Commands.Authorization.GenerateUserCommand.identifier">
+            <summary>
+            Identifier specific to Auth0
+            </summary>
+        </member>
+        <member name="T:Application.Security.Commands.Authorization.GenerateUserCommandHandler">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:Application.Security.Commands.Authorization.GenerateUserCommandHandler.#ctor(Application.Interfaces.IIdentityService)">
+            <summary>
+            General command to create a user
+            </summary>
+            <param name="identityService"></param>
+        </member>
+        <member name="M:Application.Security.Commands.Authorization.GenerateUserCommandHandler.Handle(Application.Security.Commands.Authorization.GenerateUserCommand,System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Application.Security.Queries.GetAllUsersQuery">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="T:Application.Security.Queries.GetAllUsersQueryHandler">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:Application.Security.Queries.GetAllUsersQueryHandler.#ctor(Microsoft.AspNetCore.Identity.UserManager{Domain.Bases.BaseUser})">
+            <summary>
+            Silly function to allow for getting all the users
+            </summary>
+            <param name="userManager"></param>
+        </member>
+        <member name="M:Application.Security.Queries.GetAllUsersQueryHandler.Handle(Application.Security.Queries.GetAllUsersQuery,System.Threading.CancellationToken)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.ConfigureServices">
+            <summary>
+            Application building instructions for the Application layer. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ConfigureServices.AddApplicationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+    </members>
+</doc>

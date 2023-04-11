@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Presentation.WebServer</name>
+    </assembly>
+    <members>
+        <member name="T:Presentation.WebServer.ConfigureServices">
+            <summary>
+            Presentation building instructions for the Presentation layer. 
+            </summary>
+        </member>
+        <member name="M:Presentation.WebServer.ConfigureServices.AddPresentationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Presentation building instructions for the Presentation layer. 
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Presentation.WebServer.Program">
+            <summary>
+            Entry Point
+            </summary>
+        </member>
+        <member name="M:Presentation.WebServer.Program.Main(System.String[])">
+            <summary>
+            Entry Point
+            No Arguments needed yet
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Presentation.WebServer.Services.AccessBearerService">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:Presentation.WebServer.Services.AccessBearerService.AddBearerToken(System.Threading.Tasks.Task{Microsoft.AspNetCore.Components.Authorization.AuthenticationState},System.Net.Http.HttpClient)">
+            <summary>
+            Adds a bearer token to the specified HttpClient instance based on the given AuthenticationState task.
+            </summary>
+            <param name="authenticationStateTask">A task representing the current authentication state.</param>
+            <param name="httpClient">The HttpClient instance to authenticate.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+        <member name="T:Presentation.WebServer.Services.AccessTokenStorage">
+            <summary>
+            Provides functionality to get and set the access token in local storage of the browser.
+            </summary>
+        </member>
+        <member name="M:Presentation.WebServer.Services.AccessTokenStorage.#ctor(Microsoft.JSInterop.IJSRuntime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Presentation.WebServer.Services.AccessTokenStorage"/> class with the specified JS runtime.
+            </summary>
+            <param name="jsRuntime">The JS runtime.</param>
+        </member>
+        <member name="M:Presentation.WebServer.Services.AccessTokenStorage.GetTokenAsync">
+            <summary>
+            Gets the access token from local storage.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> representing the result of the asynchronous operation.</returns>
+        </member>
+        <member name="M:Presentation.WebServer.Services.AccessTokenStorage.SetTokenAsync(System.String)">
+            <summary>
+            Sets the access token in local storage.
+            </summary>
+            <param name="token">The access token to set.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the result of the asynchronous operation.</returns>
+        </member>
+        <member name="T:Presentation.WebServer.Services.HttpService">
+            <summary>
+            Provides a configured HttpClient instance that can be used to make HTTP requests.
+            </summary>
+        </member>
+        <member name="M:Presentation.WebServer.Services.HttpService.#ctor(System.Net.Http.HttpClient,Microsoft.AspNetCore.Components.NavigationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Presentation.WebServer.Services.HttpService"/> class.
+            </summary>
+            <param name="httpClient">The HttpClient instance to use for making HTTP requests.</param>
+            <param name="navigationManager">The NavigationManager instance to use for getting the base URI.</param>
+        </member>
+        <member name="P:Presentation.WebServer.Services.HttpService.HttpClient">
+            <summary>
+            Gets a configured HttpClient instance that can be used to make HTTP requests.
+            If the BaseAddress property of the HttpClient has not been set, it will be set to the base URI of the application.
+            </summary>
+        </member>
+    </members>
+</doc>

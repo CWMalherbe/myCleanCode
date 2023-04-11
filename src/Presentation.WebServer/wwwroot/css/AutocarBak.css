@@ -1,0 +1,152 @@
+﻿@font-face {
+    font-family: 'bebas-neue';
+    src: url('../fonts/bebasneue-webfont.eot');
+    src: url('../fonts/bebasneue-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/bebasneue-webfont.woff2') format('woff2'), url('../fonts/bebasneue-webfont.woff') format('woff'), url('../fonts/bebasneue-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'bebas-neue-book';
+    src: url('../fonts/BebasNeueBook.woff') format('woff'), url('../fonts/BebasNeueBook.woff2') format('woff2'), url('../fonts/bebasneue-webfont.ttf') format('truetype'), url('../fonts/BebasNeueBook.otf') format('opentype');
+    font-style: normal;
+}
+
+:root {
+    /* Ungrouped */
+    --mud-palette-action-default-hover: #2b2a2a !important;
+    /* Pallet - Background */
+    --mud-palette-background: #f1f1f1 !important;
+    /* Pallet - Primary */
+    --mud-palette-primary: #cb2c30 !important;
+    --mud-palette-primary-rgb: 203,44,48;
+    --mud-palette-primary-darken: #8e1f22 !important;
+    --mud-palette-primary-lighten: #db6b6e !important;
+    --mud-palette-primary-hover: rgba(203,44,48,0.058823529411764705) !important;
+    /* Pallet - Secondary */
+    --mud-palette-secondary: #210708 !important;
+    --mud-palette-secondary-rgb: 33,7,8;
+    --mud-palette-secondary-darken: #170506 !important;
+    --mud-palette-secondary-lighten: #645152 !important;
+    --mud-palette-secondary-hover: rgba(33,7,8,0.058823529411764705) !important;
+    /* Pallet - Tertiary */
+    --mud-palette-tertiary: #761a1c !important;
+    --mud-palette-tertiary-rgb: 118, 26, 28;
+    --mud-palette-tertiary-darken: #531214 !important;
+    --mud-palette-tertiary-lighten: #9f5f60 !important;
+    --mud-palette-tertiary-hover: rgba(118, 26, 28,0.058823529411764705) !important;
+    /* Pallet - Info */
+    --mud-palette-info: #085ba9 !important;
+    --mud-palette-info-rgb: 8,91,169;
+    --mud-palette-info-darken: #06427a !important;
+    --mud-palette-info-lighten: #0a76db !important;
+    --mud-palette-info-hover: rgba(8,91,169,0.058823529411764705) !important;
+    /* Pallet - Success */
+    --mud-palette-success: #54b95a !important;
+    --mud-palette-success-rgb: 84,185,90;
+    --mud-palette-success-darken: #43a349 !important;
+    --mud-palette-success-lighten: #6ec474 !important;
+    --mud-palette-success-hover: rgba(84,185,90,0.058823529411764705) !important;
+    /* Pallet - Warning */
+    --mud-palette-warning: #dd711a !important;
+    --mud-palette-warning-rgb: 221,113,26;
+    --mud-palette-warning-darken: #b75e15 !important;
+    --mud-palette-warning-lighten: #e78332 !important;
+    --mud-palette-warning-hover: rgba(221,113,26,0.058823529411764705) !important;
+    /* Pallet - Error */
+    --mud-palette-error: #cb2c30 !important;
+    --mud-palette-error-rgb: 203,44,48;
+    --mud-palette-error-darken: #a72529 !important;
+    --mud-palette-error-lighten: #d64348 !important;
+    --mud-palette-error-hover: rgba(203,44,48,0.058823529411764705) !important;
+    /* Pallet - Dark */
+    --mud-palette-dark: #000000 !important;
+    --mud-palette-dark-rgb: 0,0,0;
+    --mud-palette-dark-darken: #1a1a1a !important;
+    --mud-palette-dark-lighten: #1a1a1a !important;
+    --mud-palette-dark-hover: rgba(0,0,0,0.058823529411764705) !important;
+    /* Pallet - Text */
+    --mud-palette-text-primary: #2b2a2a !important;
+    --mud-palette-text-secondary: #2b2a2a !important;
+    --mud-palette-text-disabled: #dedede !important;
+    /* Drawer */
+    --mud-palette-drawer-icon: white !important;
+    --mud-palette-drawer-background: #111111 !important;
+    --mud-drawer-width-left: 260px !important;
+    /* App Bar */
+    --mud-palette-appbar-background: #111111 !important;
+    --mud-appbar-height: 60px !important;
+    /* Typography - Default */
+    --mud-typography-default-family: 'Open Sans', 'sans-serif' !important;
+    --mud-typography-default-size: 14px !important;
+    --mud-typography-default-weight: normal !important;
+    /* Typography - H1 */
+    --mud-typography-h1-family: bebas-neue !important;
+    --mud-typography-h1-size: 34px !important;
+    /* Typography - H2 */
+    --mud-typography-h2-family: bebas-neue !important;
+    --mud-typography-h2-size: 28px !important;
+    /* Typography - H3 */
+    --mud-typography-h3-family: bebas-neue-book !important;
+    --mud-typography-h3-size: 20px !important;
+    /* Typography - H4 */
+    --mud-typography-h4-family: bebas-neue-book !important;
+    --mud-typography-h4-size: 18px !important;
+    /* Typography - H5 */
+    --mud-typography-h5-family: "Open Sans", sans-serif !important;
+    --mud-typography-h5-size: 14px !important;
+    /* Typography - H6 */
+    --mud-typography-h6-family: "Open Sans", sans-serif !important;
+    --mud-typography-h6-size: 12px !important;
+    /* Typography - Subtitle 1 */
+    --mud-typography-subtitle1-family: 'Open Sans', 'sans-serif' !important;
+    --mud-typography-subtitle1-size: 1rem;
+    /* Typography - Subtitle 2 */
+    --mud-typography-subtitle2-family: 'Open Sans', 'sans-serif' !important;
+    --mud-typography-subtitle2-size: .875rem;
+    /* Typography - Body 1 */
+    --mud-typography-body1-family: 'Open Sans', 'sans-serif' !important;
+    --mud-typography-body1-size: 14px !important;
+    /* Typography - Body 2 */
+    --mud-typography-body2-family: 'Open Sans', 'sans-serif' !important;
+    --mud-typography-body2-size: 14px !important;
+    /* Typography - Button */
+    --mud-typography-button-family: 'Open Sans', 'sans-serif' !important;
+    --mud-typography-button-size: 14px !important;
+    /* Typography - Caption */
+    --mud-typography-caption-family: 'Open Sans', 'sans-serif' !important;
+    --mud-typography-caption-size: 12px !important;
+    /* Typography - Overline */
+    --mud-typography-overline-family: 'Open Sans', 'sans-serif' !important;
+    --mud-typography-overline-size: 12px !important;
+}
+
+.mud-drawer-header {
+    justify-content: center;
+}
+
+.mud-nav-item {
+    border-bottom: 1px solid #2b2a2a;
+}
+
+.mud-nav-link {
+    align-items: center;
+}
+
+.mud-nav-link-text {
+    font-family: 'bebas-neue';
+    font-size: 20px;
+    color: #dedede;
+}
+
+.mud-nav-link.active {
+    background-color: #cb2c30 !important;
+}
+
+    .mud-nav-link.active .mud-nav-link-text {
+        color: white;
+    }
+
+.mud-container {
+    padding-top: 24px;
+}

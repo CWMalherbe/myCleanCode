@@ -1,0 +1,33 @@
+﻿@using Application.Entities.TruckParts;
+
+@if (TruckParts == null)
+{
+    <h3>Loading ...</h3>
+}
+else
+{
+    <MudToolBar>
+        <MudText Typo="Typo.h2">Truck Parts</MudText>
+        <MudSpacer />
+        @if (addControls == true)
+        {
+            <MudTextField @bind-Value="searchString" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+        }
+    </MudToolBar>
+    <MudTable Items="@TruckParts" FixedHeader="true" Striped="true" Hover="true" SortLabel="Sort By" Filter="new Func<TruckPartDTO,bool>(FilterFunction)">
+        <HeaderContent>
+            <MudTh Style="text-align:center"><MudTableSortLabel SortBy="new Func<TruckPartDTO, object>(x => x.Id)">Nr</MudTableSortLabel></MudTh>
+            <MudTh Style="text-align:center"><MudTableSortLabel SortBy="new Func<TruckPartDTO, object>(x => string.IsNullOrEmpty(x.Name) ? string.Empty : x.Name)">Name</MudTableSortLabel></MudTh>
+            <MudTh Style="text-align:center"><MudTableSortLabel SortBy="new Func<TruckPartDTO, object>(x => string.IsNullOrEmpty(x.Code) ? string.Empty : x.Code)">Code</MudTableSortLabel></MudTh>
+            <MudTh Style="text-align:center"><MudTableSortLabel SortBy="new Func<TruckPartDTO, object>(x => string.IsNullOrEmpty(x.Condition) ? string.Empty : x.Condition)">Condition</MudTableSortLabel></MudTh>
+            <MudTh Style="text-align:center"><MudTableSortLabel SortBy="new Func<TruckPartDTO, object>(x => x.TruckId)">TruckId</MudTableSortLabel></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd Style="text-align:center">@context.Id</MudTd>
+            <MudTd Style="text-align:center">@context.Name</MudTd>
+            <MudTd Style="text-align:center">@context.Code</MudTd>
+            <MudTd Style="text-align:center">@context.ConditionValue</MudTd>
+            <MudTd Style="text-align:center">@context.TruckId</MudTd>
+        </RowTemplate>
+    </MudTable>
+}

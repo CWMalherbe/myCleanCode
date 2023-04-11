@@ -1,0 +1,12 @@
+﻿@page "/"
+@using Presentation.Shared.Components
+
+<MudPaper Outlined="true" Square="true" Class="d-flex align-center px-4 py-2">
+    <MudText Typo="Typo.h1">@PageHeader</MudText>
+    <MudSpacer />
+</MudPaper>
+<MudContainer MaxWidth="MaxWidth.False">
+    <MudPaper Elevation="3" Class="px-4 py-4">
+        <ReadmeComponent/>
+    </MudPaper>
+</MudContainer>

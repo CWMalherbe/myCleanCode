@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Presentation.API</name>
+    </assembly>
+    <members>
+        <member name="T:Presentation.API.ConfigureServices">
+            <summary>
+            Presentation building instructions for the Presentation layer. 
+            </summary>
+        </member>
+        <member name="M:Presentation.API.ConfigureServices.AddPresentationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Presentation building instructions for the Presentation layer. 
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Presentation.API.Controllers.ApiControllerBase">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:Presentation.API.Controllers.ApiControllerBase.Mediator">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="T:Presentation.API.Controllers.AuditTrailController">
+            <summary>
+            Controller for AuditTrails
+            </summary>
+        </member>
+        <member name="M:Presentation.API.Controllers.AuditTrailController.Get">
+            <summary>
+            Silly controller to get all the audit logs
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Presentation.API.Controllers.AuthController">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:Presentation.API.Controllers.AuthController.AuthenticateUser(Application.Security.Commands.Authorization.AuthenticateUserCommand)">
+            <summary>
+            Authorizes the user through api methodology
+            </summary>
+            <param name="command"></param>
+            <returns>A JWT that can be used for bearer auth activities</returns>
+        </member>
+        <member name="T:Presentation.API.Controllers.TruckController">
+            <summary>
+            Controller for managing trucks.
+            </summary>
+        </member>
+        <member name="M:Presentation.API.Controllers.TruckController.CreateTruck(Application.Entities.Trucks.Commands.CreateTruckCommand)">
+            <summary>
+            Creates a new truck.
+            </summary>
+            <param name="command">The command to create a truck.</param>
+            <returns>The ID of the new truck.</returns>
+        </member>
+        <member name="M:Presentation.API.Controllers.TruckController.GetAllTrucks">
+            <summary>
+            Gets all trucks.
+            </summary>
+            <returns>A list of all trucks.</returns>
+        </member>
+        <member name="M:Presentation.API.Controllers.TruckController.GetTruck(System.Int64)">
+            <summary>
+            Gets a specific truck by ID.
+            </summary>
+            <param name="TruckId">The ID of the truck to get.</param>
+            <returns>The truck with the specified ID.</returns>
+        </member>
+        <member name="M:Presentation.API.Controllers.TruckController.DeleteTruck(System.Int64)">
+            <summary>
+            Deletes a specific truck.
+            </summary>
+            <param name="TruckId">The id needed to delete a truck.</param>
+            <returns>No content.</returns>
+        </member>
+        <member name="M:Presentation.API.Controllers.TruckController.UpdateTruck(Application.Entities.Trucks.Commands.UpdateTruckCommand)">
+            <summary>
+            Updates a specific truck.
+            </summary>
+            <param name="command">The command to update a truck.</param>
+            <returns>No content.</returns>
+        </member>
+        <member name="T:Presentation.API.Controllers.TruckPartController">
+            <summary>
+            Controller for managing truck parts.
+            </summary>
+        </member>
+        <member name="M:Presentation.API.Controllers.TruckPartController.Create(Application.Entities.TruckParts.Commands.CreateTruckPartCommand)">
+            <summary>
+            Creates a new truck part.
+            </summary>
+            <param name="command">The command to create the truck part.</param>
+            <returns>The ID of the newly created truck part.</returns>
+        </member>
+        <member name="M:Presentation.API.Controllers.TruckPartController.GetAllTruckParts">
+            <summary>
+            Retrieves alll the truck parts
+            </summary>
+            <returns>A list of truck parts.</returns>
+        </member>
+        <member name="M:Presentation.API.Controllers.TruckPartController.GetTruckPartsWithPagination(Application.Entities.TruckParts.Queries.GetAllTruckPartsWithPaginationQuery)">
+            <summary>
+            Retrieves a paginated list of truck parts based on query parameters.
+            </summary>
+            <param name="query">The query parameters for retrieving truck parts.</param>
+            <returns>A paginated list of truck parts.</returns>
+        </member>
+        <member name="M:Presentation.API.Controllers.TruckPartController.GetTruckParts(System.Int64)">
+            <summary>
+            Retrieves a list of truck parts for a specific truck.
+            </summary>
+            <param name="TruckId">The ID of the truck to retrieve parts for.</param>
+            <returns>A list of truck parts for the specified truck.</returns>
+        </member>
+        <member name="M:Presentation.API.Controllers.TruckPartController.GetTruckPart(System.Int64,System.Int64)">
+            <summary>
+            Retrieves a specific truck part for a specific truck.
+            </summary>
+            <param name="TruckId">The ID of the truck that the truck part belongs to.</param>
+            <param name="TruckPartId">The ID of the truck part to retrieve.</param>
+            <returns>The specified truck part.</returns>
+        </member>
+        <member name="M:Presentation.API.Controllers.TruckPartController.DeleteTruckPart(System.Int64)">
+            <summary>
+            Deletes a specific truck part.
+            </summary>
+            <param name="TruckPartId"></param>
+            <returns>200 Ok</returns>
+        </member>
+        <member name="M:Presentation.API.Controllers.TruckPartController.UpdateTruckPart(Application.Entities.TruckParts.Commands.UpdateTruckPartCommand)">
+            <summary>
+            Updates a specific truck part.
+            </summary>
+            <param name="command"></param>
+            <returns>200 Ok</returns>
+        </member>
+        <member name="T:Presentation.API.Controllers.UserController">
+            <summary>
+            Silly Controller for creating and reading users
+            </summary>
+        </member>
+        <member name="M:Presentation.API.Controllers.UserController.CreateUser(Application.Security.Commands.Authorization.GenerateUserCommand)">
+            <summary>
+            Creates a user
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Presentation.API.Controllers.UserController.GetUsers">
+            <summary>
+            Reads all users
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Presentation.API.Program">
+            <summary>
+            Entry Point
+            </summary>
+        </member>
+        <member name="M:Presentation.API.Program.Main(System.String[])">
+            <summary>
+            Entry Point
+            No Arguments needed yet
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

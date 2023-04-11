@@ -1,0 +1,22 @@
+﻿@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+
+<MudAvatar Image="@ImageUrl" onclick="@(() => TogglePopoverOpen)" Class="cursor-pointer"></MudAvatar>
+<MudPopover Open="@PopoverOpenToggle" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
+    <MudPaper Outlined="true" Width="300px">
+        <MudCard>
+            <MudCardHeader>
+                <MudText Typo="Typo.h2">@UserName</MudText>
+            </MudCardHeader>
+            <MudDivider/>
+            <MudCardContent>
+                <MudList Clickable="true">
+                    <MudListItem OnClick="@TogglePopoverOpen" Text="User Info" Href="/userinfo">
+                    </MudListItem>
+                    <MudListItem OnClick="@ActionLogout" Text="Log Out">
+                    </MudListItem>
+                </MudList>
+            </MudCardContent>
+        </MudCard>
+    </MudPaper>
+</MudPopover>

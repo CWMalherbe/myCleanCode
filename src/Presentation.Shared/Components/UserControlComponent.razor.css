@@ -1,0 +1,8 @@
+﻿.adjust-to-bar-height{
+    height: 95%;
+}
+
+.adjust-to-bar-height-square {
+    height: 95%;
+    aspect-ratio: 1/1;
+}

@@ -1,0 +1,52 @@
+﻿@using Domain.ValueObjects;
+@inject IDialogService Dialog
+@inject ISnackbar Snackbar
+
+<MudDialog>
+    <DialogContent>
+        <MudText Typo="Typo.h1">Create Truck Form</MudText>
+        <EditForm EditContext="@editContext">
+            <DataAnnotationsValidator />
+            <MudTextField Label="Truck Name" @bind-Value="Entity.Name" For="@(() => Entity.Name)" />
+            <br />
+            <MudSelect T="string" Label="Paint" AnchorOrigin="Origin.BottomCenter" @bind-Value="Entity.Paint">
+                @foreach (var paint in Paint.SupportedPaintColors)
+                {
+                    <MudSelectItem Value="@paint.Hex">@paint.Hex</MudSelectItem>
+                }
+            </MudSelect>
+            <br />
+            <MudText Typo="Typo.h2">Truck Parts</MudText>
+            <MudSimpleTable Style="overflow-x: auto;">
+                <thead>
+                    <tr>
+                        <th style="text-align:center">Name</th>
+                        <th style="text-align:center">Code</th>
+                        <th style="text-align:center">Condition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Entity.Items != null)
+                    {
+                        @foreach (var part in Entity.Items)
+                        {
+                            <tr>
+                                <td style="text-align:center">@part.Name</td>
+                                <td style="text-align:center">@part.Code</td>
+                                <td style="text-align:center">@part.Condition</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+
+            </MudSimpleTable>
+            <MudButton OnClick="@AddPart" StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary">Add Part</MudButton>
+            <br />
+            <br />
+        </EditForm>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="@Submit">Ok</MudButton>
+    </DialogActions>
+</MudDialog>

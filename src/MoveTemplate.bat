@@ -1,0 +1,1 @@
+ROBOCOPY C:\Development\VS\TheTemplate C:\Development\VS\NWalters.ProjectTemplate /MIR /MT /log:C:\Development\logs\robo_template.txt /XD C:\Development\VS\TheTemplate\.git

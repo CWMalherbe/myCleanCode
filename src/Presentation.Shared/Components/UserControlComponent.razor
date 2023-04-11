@@ -1,0 +1,11 @@
+﻿<!--
+<MudAvatar Image="@ImageUrl"></MudAvatar>
+-->
+<form style="height: 100%;" action="/logout" method="get">
+    <MudStack Spacing="0" Row="false" AlignItems="AlignItems.End" Justify="Justify.SpaceEvenly" Class="mx-4" Style="height:100%;">
+            <MudText Style="height:40%;" Typo="Typo.h3" Color="Color.Inherit">@UserName</MudText>
+            <MudButton Style="height:40%;" Class="px-1 rounded-0" Variant="Variant.Filled" ButtonType="ButtonType.Submit" Size="Size.Small" Color="Color.Error" DisableElevation="true">SIGN OUT</MudButton>
+    </MudStack>
+</form>
+<MudIconButton Style="height:100%; aspect-ratio: 1/1;" Class="mx-0 rounded-0" Size="Size.Large" Variant="Variant.Filled" Icon="@Icons.Material.Filled.CompareArrows" Color="Color.Tertiary"></MudIconButton>
+<MudIconButton Style="height:100%; aspect-ratio: 1/1; margin-right: -24px;" Class="rounded-0" Size="Size.Large" Variant="Variant.Filled" Icon="@Icons.Material.Filled.Apps" Color="Color.Tertiary"></MudIconButton>

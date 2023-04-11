@@ -1,0 +1,61 @@
+﻿@page "/trucksoverview"
+@using Application.Entities.TruckParts;
+@using Presentation.Shared.Components
+@inject IDialogService Dialog
+@inject ISnackbar Snackbar
+
+<MudPaper Outlined="true" Square="true" Class="d-flex align-center px-4 py-2">
+    <MudText Typo="Typo.h1">@PageHeader</MudText>
+    <MudSpacer />
+    <MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary" Size="Size.Small" OnClick="(() => OpenCreateDialog())">Add Truck</MudButton>
+</MudPaper>
+<MudContainer MaxWidth="MaxWidth.False">
+    <MudPaper Elevation="3" Class="px-4 py-4">
+        @if (TableObjects == null)
+        {
+            <h3>Loading ...</h3>
+        }
+        else
+        {
+            <MudToolBar>
+                <MudText Typo="Typo.h2">@TableHeader</MudText>
+                <MudSpacer />
+                <MudTextField @bind-Value="searchString" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+            </MudToolBar>
+            <MudTable Items="@TableObjects" Striped="true" Hover="true" SortLabel="Sort By" FixedHeader="true" Filter="new Func<KeyValuePair<long,TableObject>,bool>(FilterFunction)">
+                <HeaderContent>
+                    <MudTh Style="text-align:center"><MudTableSortLabel SortBy="new Func<KeyValuePair<long,TableObject>, object>(x=>x.Value.truck.Id)">Id</MudTableSortLabel></MudTh>
+                    <MudTh Style="text-align:center"><MudTableSortLabel SortBy="new Func<KeyValuePair<long,TableObject>, object>(x=>string.IsNullOrEmpty(x.Value.truck.Name) ? string.Empty : x.Value.truck.Name)">Name</MudTableSortLabel></MudTh>
+                    <MudTh Style="text-align:center"><MudTableSortLabel SortBy="new Func<KeyValuePair<long,TableObject>, object>(x=>string.IsNullOrEmpty(x.Value.truck.Paint) ? string.Empty : x.Value.truck.Paint)">Paint</MudTableSortLabel></MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd Style="text-align:center">@context.Value.truck.Id</MudTd>
+                    <MudTd Style="text-align:center">@context.Value.truck.Name</MudTd>
+                    <MudTd Style="text-align:center">@context.Value.truck.Paint</MudTd>
+                    <MudTd Style="text-align:center">
+                        <MudIconButton Color="Color.Primary" Variant="Variant.Outlined" Icon="@((context.Value.showDetails == true) ? Icons.Material.Filled.ArrowUpward : Icons.Material.Filled.ArrowDropDown)" OnClick="@(() => ActionExpandButton(context.Value.truck.Id))"></MudIconButton>
+                    </MudTd>
+                </RowTemplate>
+                <ChildRowContent>
+                    @if (context.Value.showDetails)
+                    {
+                        <MudTr>
+                            <td colspan="4">
+                                <MudCard>
+                                    <MudCardContent>
+                                        <TruckPartTableComponent TruckParts="@(context.Value.truck.Items == null ? new List<TruckPartDTO>() : context.Value.truck.Items.ToList())" />
+                                    </MudCardContent>
+                                    <MudCardActions>
+                                        <MudSpacer></MudSpacer>
+                                        <MudButton StartIcon="@Icons.Material.Filled.Edit" Color="Color.Primary" OnClick="(() => OpenEditDialog(context.Value.truck))">Edit</MudButton>
+                                        <MudButton StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="(() => OpenDeleteDialog(context.Value.truck))">Delete</MudButton>
+                                    </MudCardActions>
+                                </MudCard>
+                            </td>
+                        </MudTr>
+                    }
+                </ChildRowContent>
+            </MudTable>
+        }
+    </MudPaper>
+</MudContainer>
